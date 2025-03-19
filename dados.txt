@@ -1,0 +1,23 @@
+vendas
+41755.6400; 53778.2600; 104502.7800; 127180.6100; 49206.7600; 46761.5500; 66763.9600;
+
+marketing
+500; 600; 550; 700; 650;
+
+financeiro
+Valor pago; 5000; Valor recepido; 7000; Lucro; 2000;
+
+vendedoresquemaisvenderam
+João; 5000; Maria; 4500; Paulo; 3000; Mario; 5000; Cauã; 2500
+
+vendedoresquemenosvenderam
+Lucas; 1000; Ana; 800; Fabio; 600; João Pedro; 400;
+
+produtosquemaisvenderam
+Produto A; 1000; Produto B; 800; Produto C; 1200;
+
+produtosquemenosvenderam
+Produto X; 100; Produto Y; 200; Produto Z; 150;
+
+clientesquemaiscompraram
+Cliente 1; 5000; Cliente 2; 4500; Cliente 3; 3000;

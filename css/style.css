@@ -1,0 +1,319 @@
+:root {
+    --preto: #000;
+    --branco: #fff;
+    --cinzaNeve: #f0f0f0;
+    --azulPetroleo: #004767;
+    --azulClaroTurquesa: #03bfcb;
+    --corBotaoFecharMenu: #e74c3c;
+    --corAzul: #007aff;
+
+
+
+    --pretoModoNoturno: #1c1c1e;
+    --brancoModoNoturno: #e0e0e0;
+    --cinzaNeveModoNoturno: #1e1e1e;
+    --azulPetroleoModoNoturno: #2a3e4c;
+    /* Azul petróleo mais escuro */
+    --azulClaroTurquesaModoNoturno: #5ac8fa;
+    /* Azul turquesa mais vibrante */
+    --corBotaoFecharMenuModoNoturno: #ff6b6b;
+    /* Vermelho suave para botão de fechar */
+    --corAzulModoNoturno: #1e88e5;
+    /* Azul mais vibrante para botões */
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: var(--cinzaNeve);
+    transition: background-color 0.5s ease, color 0.5s ease;
+    /* Transição suave */
+}
+
+/* Dark Mode */
+
+.modo-noturno body {
+    background-color: var(--pretoModoNoturno);
+    color: var(--cinzaNeve);
+}
+
+.modo-noturno header {
+    background-color: var(--azulPetroleoModoNoturno);
+}
+
+.modo-noturno .card {
+    background-color: var(--cinzaNeveModoNoturno);
+    box-shadow: 0 4px 8px var(--azulPetroleoModoNoturno);
+}
+
+.modo-noturno .card p {
+    color: var(--azulClaroTurquesaModoNoturno);
+}
+
+.modo-noturno .sidebar {
+    background-color: var(--azulClaroTurquesaModoNoturno);
+    color: var(--cinzaNeve);
+}
+
+.modo-noturno .sidebar ul li a {
+    color: var(--azulPetroleoModoNoturno);
+    transition: background-color 0.3s ease;
+}
+
+.modo-noturno .card h3 {
+    color: var(--azulClaroTurquesaModoNoturno);
+}
+
+
+/* Header - Cabeçalho do topo */
+
+header {
+    background-color: var(--azulPetroleo);
+    color: var(--cinzaNeve);
+    padding: 20px;
+    text-align: center;
+    box-sizing: border-box;
+}
+
+
+/* Configurações flutuantes */
+.configuracoes-flutuante {
+    position: fixed;
+    top: 20%;
+    right: -100%;
+    /* Inicialmente está escondido */
+    width: 300px;
+    background-color: var(--cinzaNeve);
+    padding: 20px;
+    color: var(--azulPetroleo);
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    transition: right 0.3s ease-in-out;
+    z-index: 200;
+    /* Garantir que fique sobre outros elementos */
+}
+
+.configuracoes-flutuante h3 {
+    color: var(--azulPetroleo);
+    margin-bottom: 10px;
+}
+
+.configuracoes-flutuante label {
+    color: var(--azulPetroleo);
+    font-size: 1rem;
+    display: block;
+    margin-bottom: 10px;
+}
+
+.configuracoes-flutuante button {
+    background-color: var(--azulPetroleo);
+    color: var(--cinzaNeve);
+    padding: 10px 20px;
+    font-size: 1rem;
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+}
+
+.configuracoes-flutuante button:hover {
+    background-color: #00334b;
+}
+
+.configuracoes-flutuante #fecharConfiguracoes {
+    background-color: var(--corBotaoFecharMenu);
+    color: var(--cinzaNeve);
+    margin-top: 20px;
+}
+
+.configuracoes-flutuante #fecharConfiguracoes:hover {
+    background-color: #c0392b;
+}
+
+/* Alteração no menu lateral */
+.sidebar ul li a {
+    text-decoration: none;
+    color: var(--cinzaNeve);
+    display: block;
+    padding: 10px;
+    font-size: 0.95rem;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+}
+
+.sidebar ul li a:hover {
+    background-color: var(--azulPetroleo);
+    color: var(--cinzaNeve);
+}
+
+.sidebar ul li a.active {
+    background-color: var(--azulPetroleo);
+}
+
+#configuracoes:hover {
+    background-color: var(--azulPetroleo);
+}
+
+.container {
+    display: flex;
+}
+
+/* Menu Lateral - Fixado */
+
+.sidebar {
+    width: 350px;
+    background-color: var(--azulClaroTurquesa);
+    color: var(--cinzaNeve);
+    padding-top: 20px;
+    top: 0;
+    left: 0;
+    z-index: 100;
+}
+
+.sidebar-main {
+    display: grid;
+    place-items: center;
+}
+
+.sidebar-main input {
+    width: 75%;
+    padding: 12px 14px;
+    position: relative;
+    border: 1px solid var(--azulPetroleo);
+    border-radius: 8px;
+    background-color: rgba(255, 255, 255, 0.1);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(10px);
+    transition: all 0.3s ease-in-out;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--azulPetroleo);
+}
+
+.sidebar-main input:focus {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    border-color: var(--azulPetroleoModoNoturno);
+    outline: none;
+}
+
+.sidebar-main input::placeholder {
+    color: var(--azulPetroleoModoNoturno);
+    font-weight: 600;
+    opacity: 0.8;
+}
+
+
+.sidebar a {
+    display: block;
+    color: var(--cinzaNeve);
+    padding: 15px;
+    text-decoration: none;
+}
+
+.sidebar a:hover {
+    color: var(--azulPetroleo);
+}
+
+.sidebar-header h3 {
+    margin-left: 20px;
+    color: var(--azulPetroleo);
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.sidebar h4 {
+    margin-left: 20px;
+    margin-bottom: 20px;
+    color: var(--cinzaNeve);
+    font-size: 1rem;
+}
+
+label {
+    margin-left: 20px;
+    margin-bottom: 20px;
+    color: var(--cinzaNeve);
+    font-size: 1rem;
+}
+
+.sidebar ul {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+.sidebar ul li {
+    padding: 10px 20px;
+}
+
+.sidebar ul li a {
+    text-decoration: none;
+    color: var(--cinzaNeve);
+    display: block;
+    padding: 10px;
+    font-size: 0.95rem;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+}
+
+.sidebar ul li a:hover {
+    background-color: var(--azulPetroleo);
+    color: var(--cinzaNeve);
+}
+
+/* Área Central */
+
+.content {
+    padding: 20px;
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 20px;
+}
+
+.card {
+    background-color: var(--cinzaNeve);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    border-radius: 8px;
+    height: 455px;
+}
+
+.card h3 {
+    color: var(--azulPetroleo);
+}
+
+.card p {
+    text-align: center;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--azulPetroleo);
+}
+
+.botao-exportacao {
+    padding: 8px 12px;
+    background-color: var(--azulPetroleo);
+    border: 1px solid var(--azulClaroTurquesa);
+    border-radius: 4px;
+    color: var(--cinzaNeve);
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.chart-container {
+    position: relative;
+    height: 300px;
+    width: 100%;
+}
+
+@media (min-width: 3000px) {
+    .sidebar {
+        display: block;
+        position: fixed;
+    }
+
+    .content {
+        display: block;
+        margin-left: 370px;
+        height: 100vh;
+    }
+}

@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="shortcut icon" href="https://www.softclever.com.br/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+</head>
+
+<body>
+    <header>
+        <h3><img src="src/assets/softclever-logo.png" alt="Logo SoftClever"></h3>
+    </header>
+
+    <div class="container">
+        <div class="sidebar">
+            <div class="sidebar-header">
+                <h3>Dashboard</h3>
+            </div>
+            <div class="sidebar-main">
+                <input type="text" id="filtroGrafico" placeholder="Pesquise o nome do gráfico: ">
+                <ul id="sidebar-menu">
+                    <li>
+                        <a href="#" id="configuracoes">Configurações</a>
+                    </li>
+                    <li>
+                        <a href="#vendas" class="menu-item">Funcionarios</a>
+                        <ul class="submenu">
+                            <li>
+                                <a href="#vendedoresquemaisvenderam">
+                                    <i class="fa fa-user-tie"></i> Vendedores que mais venderam
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#vendedoresquemenosvenderam">
+                                    <i class="fa fa-user-minus"></i> Vendedores que menos venderam
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#produtos" class="menu-item">Produtos</a>
+                        <ul class="submenu">
+                            <li>
+                                <a href="#produtosquemaisvenderam">
+                                    <i class="fa fa-boxes"></i> Produtos que mais venderam
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#produtosquemenosvenderam">
+                                    <i class="fa fa-box-open"></i> Produtos que menos venderam
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#clientes" class="menu-item">Clientes</a>
+                        <ul class="submenu">
+                            <li>
+                                <a href="#clientesquemaiscompraram">
+                                    <i class="fa fa-users"></i> Clientes que mais compraram
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#marketing" class="menu-item">Marketing</a>
+                        <ul class="submenu">
+                            <li>
+                                <a href="marketing">
+                                    <i class="fa fa-bullhorn"></i> Marketing
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#vendas" class="menu-item">Vendas</a>
+                        <ul class="submenu">
+                            <li>
+                                <a href="vendas">
+                                    <i class="fa fa-chart-bar"></i> Vendas
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#financeiro" class="menu-item">Financeiro</a>
+                        <ul class="submenu">
+                            <li>
+                                <a href="financeiro">
+                                    <i class="fa fa-times"></i> Financeiro
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="configuracoes-flutuante" id="configuracoesFlutuante">
+            <h3>Configurações</h3>
+            <button id="fecharConfiguracoes"><i class="fa fa-times"></i> Fechar</button>
+            <button id="toggleDarkMode">
+                <iclass fa fa-adjust></i> Alterar Tema
+            </button>
+        </div>
+
+        <div class="content">
+            <div class="card" id="barCard">
+                <h3>Vendedores que mais venderam</h3>
+                <div class="chart-container">
+                    <canvas id="barDataVendedoresQueMaisVenderam"></canvas>
+                </div>
+                <p class="chart-descricao" id="descVendedorMaisVenderam">Este gráfico mostra os vendedores que mais
+                    realizaram vendas no período dos últimos 7 dias.</p>
+                <button class="botao-exportacao"
+                    onclick="exportarParaCSV(vendedoresQueMaisVenderamDados, 'vendedores_que_mais_venderam.csv')">Exportar
+                    para CSV</button>
+                <button class="botao-exportacao"
+                    onclick="exportarParaPDF(vendedoresQueMaisVenderamDados, 'vendedores_que_mais_venderam.pdf')">Exportar
+                    para PDF</button>
+            </div>
+            <div class="card" id="barCard">
+                <h3>Vendedores que menos venderam</h3>
+                <div class="chart-container">
+                    <canvas id="barDataVendedoresQueMenosVenderam"></canvas>
+                </div>
+                <p class="chart-descricao" id="descVendedorMenosVenderam">Aqui são apresentados os vendedores que menos
+                    venderam nos últimos 7 dias.</p>
+                <button class="botao-exportacao"
+                    onclick="exportarParaCSV(vendedoresQueMenosVenderam, 'vendedores_que_menos_venderam.csv')">Exportar
+                    para CSV</button>
+                <button class="botao-exportacao"
+                    onclick="exportarParaPDF(vendedoresQueMenosVenderam, 'vendedores_que_menos_venderam.pdf')">Exportar
+                    para PDF</button>
+            </div>
+
+            <div class="card" id="mixedCard">
+                <h3>Produtos que mais venderam</h3>
+                <div class="chart-container">
+                    <canvas id="mixedDataProdutosMaisVendidos"></canvas>
+                </div>
+                <p class="chart-descricao" id="descProdutoMaisVendido">Este gráfico exibe os produtos que tiveram o
+                    maior volume de vendas nos últimos 7 dias.</p>
+                <button class="botao-exportacao"
+                    onclick="exportarParaCSV(produtosMaisVendidos, 'produtos_mais_vendidos.csv')">Exportar para
+                    CSV</button>
+                <button class="botao-exportacao"
+                    onclick="exportarParaPDF(produtosMaisVendidos, 'produtos_mais_vendidos.pdf')">Exportar para
+                    PDF</button>
+            </div>
+
+            <div class="card" id="mixedCard">
+                <h3>Produtos que menos venderam</h3>
+                <div class="chart-container">
+                    <canvas id="mixedDataProdutosMenosVendidos"></canvas>
+                </div>
+                <p class="chart-descricao" id="descProdutoMenosVendido">Aqui são mostrados os produtos com menor número
+                    de vendas nos últimos 7 dias.</p>
+                <button class="botao-exportacao"
+                    onclick="exportarParaCSV(produtosMenosVendidos, 'produtos_menos_vendidos.csv')">Exportar para
+                    CSV</button>
+                <button class="botao-exportacao"
+                    onclick="exportarParaPDF(produtosMenosVendidos, 'produtos_menos_vendidos.pdf')">Exportar para
+                    PDF</button>
+            </div>
+
+            <div class="card" id="barCard">
+                <h3>Clientes que mais Compraram</h3>
+                <div class="chart-container">
+                    <canvas id="barDataClientesQueMaisCompraram"></canvas>
+                </div>
+                <p class="chart-descricao" id="descClientesQueMaisCompraram">Apresenta os clientes que mais realizaram
+                    compras nos últimos 7 dias</p>
+                <button class="botao-exportacao"
+                    onclick="exportarParaCSV(clientesQueMaisCompraram, 'clientes_que_mais_compraram.csv')">Exportar para
+                    CSV</button>
+                <button class="botao-exportacao"
+                    onclick="exportarParaPDF(clientesQueMaisCompraram, 'clientes_que_mais_compraram.pdf')">Exportar para
+                    PDF</button>
+            </div>
+
+            <div class="card" id="barCard">
+                <h3>Vendas</h3>
+                <div class="chart-container">
+                    <canvas id="barChart"></canvas>
+                </div>
+                <p class="chart-descricao" id="descVendas">Gráfico geral de vendas ao longo do período nos últimos 7
+                    dias. </p>
+                <button class="botao-exportacao"
+                    onclick="exportarParaCSV(vendas, 'vendas_ultimos_7_dias.csv')">Exportar
+                    para CSV</button>
+                <button class="botao-exportacao"
+                    onclick="exportarParaPDF(vendas, 'vendas_ultimos_7_dias.pdf')">Exportar
+                    para PDF</button>
+            </div>
+            <div class="card" id="lineCard">
+                <h3>Marketing</h3>
+                <div class="chart-container">
+                    <canvas id="lineChart"></canvas>
+                </div>
+                <p class="chart-descricao" id="marketing">Dados relacionados ao impacto das campanhas de marketing nos
+                    últimos 7 dias.</p>
+            </div>
+            <div class="card" id="pieCard">
+                <h3>Financeiro</h3>
+                <div class="chart-container">
+                    <canvas id="pieChart"></canvas>
+                </div>
+                <p class="chart-descricao" id="financeiro">Distribuição financeira da empresa nos últimos 7 dias.</p>
+            </div>
+        </div>
+    </div>
+    <script src="js/configuracoesMenu.js"></script>
+    <script src="js/graficos.js"></script>
+    <script src="js/modoNoturno.js"></script>
+    <script src="js/filtro.js"></script>
+</body>
+
+</html>
