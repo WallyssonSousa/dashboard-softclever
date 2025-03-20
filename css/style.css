@@ -131,6 +131,23 @@ header {
     background-color: #c0392b;
 }
 
+/* Estilização do menu */
+
+.btn-filtro{
+    padding: 10px 15px;
+    margin: 5px;
+    border: none;
+    background: var(--azulPetroleo);
+    color: white;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 5px;
+}
+
+.btn-filtro{
+    background: var(--azulClaroTurquesaModoNoturno);
+}
+
 /* Alteração no menu lateral */
 .sidebar ul li a {
     text-decoration: none;
@@ -275,7 +292,7 @@ label {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     padding: 20px;
     border-radius: 8px;
-    height: 455px;
+    height: 470px;
 }
 
 .card h3 {
