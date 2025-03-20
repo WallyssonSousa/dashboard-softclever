@@ -26,6 +26,8 @@ async function carregarDados() {
             marketing: [],
             financeiro: { labels: [], valores: [] },
             vendedoresQueMaisVenderam: { labels: [], valores: [] },
+            vendedoresQueMaisVenderamMensal: {labels: [], valores: []},
+            vendedoresQueMaisVenderamAnual: {labels: [], valores: []},
             vendedoresQueMenosVenderam: { labels: [], valores: [] },
             produtosMaisVendidos: { labels: [], valores: [] },
             produtosMenosVendidos: { labels: [], valores: [] },
@@ -37,7 +39,10 @@ async function carregarDados() {
         linhas.forEach(linha => {
             console.log('Processando linha:', linha);
 
-            if (['vendas', 'marketing', 'financeiro', 'vendedoresquemaisvenderam', 'vendedoresquemenosvenderam', 'produtosquemaisvenderam', 'produtosquemenosvenderam', 'clientesquemaiscompraram'].includes(linha.toLowerCase())) {
+            if (['vendas', 'marketing', 'financeiro', 'vendedoresquemaisvenderam', 
+                'vendedoresquemaisvenderammensal', 'vendedoresquemaisvenderamanual',
+                'vendedoresquemenosvenderam', 'produtosquemaisvenderam', 'produtosquemenosvenderam', 
+                'clientesquemaiscompraram'].includes(linha.toLowerCase())) {
                 tipo = linha.toLowerCase();
                 console.log(`Tipo atualizado para: ${tipo}`);
             } else {
@@ -63,7 +68,18 @@ async function carregarDados() {
                         dados.vendedoresQueMaisVenderam.labels.push(partes[i]);
                         dados.vendedoresQueMaisVenderam.valores.push(parseFloat(partes[i + 1]));
                     }
-                } else if (tipo === 'vendedoresquemenosvenderam') {
+                } else if (tipo === 'vendedoresquemaisvenderammensal'){
+                    for (let i = 0; i < partes.length; i += 2){
+                        dados.vendedoresQueMaisVenderamMensal.labels.push(partes[i]);
+                        dados.vendedoresQueMaisVenderamMensal.valores.push(parseFloat(partes[i + 1]));
+                    }
+                } else if (tipo === 'vendedoresquemaisvenderamanual'){
+                    for(let i = 0; i < partes.length; i += 2){
+                        dados.vendedoresQueMaisVenderamAnual.labels.push(partes[i]);
+                        dados.vendedoresQueMaisVenderamAnual.valores.push(parseFloat(partes[i + 1]));
+                    }
+                }        
+                else if (tipo === 'vendedoresquemenosvenderam') {
                     for (let i = 0; i < partes.length; i += 2) {
                         dados.vendedoresQueMenosVenderam.labels.push(partes[i]);
                         dados.vendedoresQueMenosVenderam.valores.push(parseFloat(partes[i + 1]));
@@ -110,6 +126,8 @@ async function carregarDados() {
 
 
 let vendedoresQueMaisVenderam = [];
+let vendedoresQueMaisVenderamMensal = [];
+let vendedoresQueMaisVenderamAnual = []; 
 let vendedoresQueMenosVenderam = [];
 let produtosMaisVendidos = [];
 let produtosMenosVendidos = [];
@@ -168,6 +186,32 @@ function atualizarGraficos(dados) {
         };
     }
 
+    if (dados.vendedoresQueMaisVenderamMensal.labels.length > 0) {
+        barDataVendedoresQueMaisVenderamMensal = {
+            labels: dados.vendedoresQueMaisVenderamMensal.labels,
+            datasets: [{
+                label: 'Vendedores que Mais Venderam',
+                data: dados.vendedoresQueMaisVenderamMensal.valores,
+                backgroundColor: 'rgb(0, 71, 103)',
+                borderColor: 'rgb(3, 191, 203)',
+                borderWidth: 1
+            }]
+        };
+    }
+
+    if (dados.vendedoresQueMaisVenderamAnual.labels.length > 0) {
+        barDataVendedoresQueMaisVenderamAnual = {
+            labels: dados.vendedoresQueMaisVenderamAnual.labels,
+            datasets: [{
+                label: 'Vendedores que Mais Venderam',
+                data: dados.vendedoresQueMaisVenderamAnual.valores,
+                backgroundColor: 'rgb(0, 71, 103)',
+                borderColor: 'rgb(3, 191, 203)',
+                borderWidth: 1
+            }]
+        };
+    }
+
     if (dados.vendedoresQueMenosVenderam.labels.length > 0) {
         barDataVendedoresQueMenosVenderam = {
             labels: dados.vendedoresQueMenosVenderam.labels,
@@ -186,7 +230,7 @@ function atualizarGraficos(dados) {
             labels: dados.produtosMaisVendidos.labels,
             datasets: [
                 {
-                    label: 'Produtos que Mais Vendaram',
+                    label: 'Produtos que Mais Venderam',
                     data: dados.produtosMaisVendidos.valores,
                     backgroundColor: 'rgb(0, 71, 103)',
                     borderColor: 'rgb(3, 191, 203)',
@@ -232,6 +276,8 @@ function atualizarGraficos(dados) {
     updateGraphData(lineData, lineConfig, 'lineChart', 'line');
     updateGraphData(pieData, pieConfig, 'pieChart', 'pie');
     updateGraphData(barDataVendedoresQueMaisVenderam, barConfig, 'barDataVendedoresQueMaisVenderam', 'bar');
+    updateGraphData(barDataVendedoresQueMaisVenderamMensal, barConfig, 'barDataVendedoresQueMaisVenderamMensal', 'bar');
+    updateGraphData(barDataVendedoresQueMaisVenderamAnual, barConfig, 'barDataVendedoresQueMaisVenderamAnual', 'bar');
     updateGraphData(barDataVendedoresQueMenosVenderam, barConfig, 'barDataVendedoresQueMenosVenderam', 'bar');
     updateGraphData(mixedDataProdutosMaisVendidos, mixedConfig, 'mixedDataProdutosMaisVendidos', 'mixed');
     updateGraphData(mixedDataProdutosMenosVendidos, mixedConfig, 'mixedDataProdutosMenosVendidos', 'mixed');
@@ -240,6 +286,12 @@ function atualizarGraficos(dados) {
 
     if (dados.vendedoresQueMaisVenderam.labels.length > 0) {
         vendedoresQueMaisVenderamDados = dados.vendedoresQueMaisVenderam.labels.map((label, index) => [label, dados.vendedoresQueMaisVenderam.valores[index]]);
+    }
+    if (dados.vendedoresQueMaisVenderamMensal.labels.length > 0) {
+        vendedoresQueMaisVenderamMensalDados = dados.vendedoresQueMaisVenderamMensal.labels.map((label, index) => [label, dados.vendedoresQueMaisVenderam.valores[index]]);
+    }
+    if (dados.vendedoresQueMaisVenderamAnual.labels.length > 0) {
+        vendedoresQueMaisVenderamAnualDados = dados.vendedoresQueMaisVenderamAnual.labels.map((label, index) => [label, dados.vendedoresQueMaisVenderam.valores[index]]);
     }
     if (dados.vendedoresQueMenosVenderam.labels.length > 0) {
         vendedoresQueMenosVenderam = dados.vendedoresQueMenosVenderam.labels.map((label, index) => [label, dados.vendedoresQueMenosVenderam.valores[index]]);

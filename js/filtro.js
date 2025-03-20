@@ -11,3 +11,19 @@ document.getElementById('filtroGrafico').addEventListener('input', function() {
         }
     });
 });
+
+function filterCards(period) {
+    var cards = document.querySelectorAll(".card");
+
+    cards.forEach(card => {
+        if (period === "" || card.dataset.period === period) {
+            card.style.opacity = "1";
+            card.style.transform = "scale(1)";
+            card.style.display = "block";
+        } else {
+            card.style.opacity = "0";
+            card.style.transform = "scale(0.9)";
+            setTimeout(() => card.style.display = "none", 300);
+        }
+    });
+}

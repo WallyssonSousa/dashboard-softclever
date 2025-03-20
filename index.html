@@ -26,7 +26,7 @@
                 <input type="text" id="filtroGrafico" placeholder="Pesquise o nome do gráfico: ">
                 <ul id="sidebar-menu">
                     <li>
-                        <a href="#" id="configuracoes">Configurações</a>
+                        <a href="#" id="configuracoes">Opções de Visualização</a>
                     </li>
                     <li>
                         <a href="#vendas" class="menu-item">Funcionarios</a>
@@ -108,11 +108,17 @@
             <button id="toggleDarkMode">
                 <iclass fa fa-adjust></i> Alterar Tema
             </button>
+            <h3>Filtrar por período:</h3>
+            <button class="btn-filtro" onclick="filterCards('Semanal')">Semanal</button>
+            <button class="btn-filtro" onclick="filterCards('Mensal')">Mensal</button>
+            <button class="btn-filtro" onclick="filterCards('Anual')">Anual</button>
+            <button class="btn-filtro" onclick="filterCards('')">Todos</button>
+
         </div>
 
         <div class="content">
-            <div class="card" id="barCard">
-                <h3>Vendedores que mais venderam</h3>
+            <div class="card" id="barCard" data-period="Semanal">
+                <h3>Vendedores que mais venderam Semanal</h3>
                 <div class="chart-container">
                     <canvas id="barDataVendedoresQueMaisVenderam"></canvas>
                 </div>
@@ -125,7 +131,35 @@
                     onclick="exportarParaPDF(vendedoresQueMaisVenderamDados, 'vendedores_que_mais_venderam.pdf')">Exportar
                     para PDF</button>
             </div>
-            <div class="card" id="barCard">
+            <div class="card" id="barCard" data-period="Mensal">
+                <h3>Vendedores que mais venderam Mensal</h3>
+                <div class="chart-container">
+                    <canvas id="barDataVendedoresQueMaisVenderamMensal"></canvas>
+                </div>
+                <p class="chart-descricao" id="descVendedorMaisVenderam">Este gráfico mostra os vendedores que mais
+                    realizaram vendas no período do último mês.</p>
+                <button class="botao-exportacao"
+                    onclick="exportarParaCSV(vendedoresQueMaisVenderamDadosMensal, 'vendedores_que_mais_venderam.csv')">Exportar
+                    para CSV</button>
+                <button class="botao-exportacao"
+                    onclick="exportarParaPDF(vendedoresQueMaisVenderamDadosMensal, 'vendedores_que_mais_venderam.pdf')">Exportar
+                    para PDF</button>
+            </div>
+            <div class="card" id="barCard" data-period="Anual">
+                <h3>Vendedores que mais venderam Anual</h3>
+                <div class="chart-container">
+                    <canvas id="barDataVendedoresQueMaisVenderamAnual"></canvas>
+                </div>
+                <p class="chart-descricao" id="descVendedorMaisVenderam">Este gráfico mostra os vendedores que mais
+                    realizaram vendas no último ano.</p>
+                <button class="botao-exportacao"
+                    onclick="exportarParaCSV(vendedoresQueMaisVenderamDados, 'vendedores_que_mais_venderam.csv')">Exportar
+                    para CSV</button>
+                <button class="botao-exportacao"
+                    onclick="exportarParaPDF(vendedoresQueMaisVenderamDados, 'vendedores_que_mais_venderam.pdf')">Exportar
+                    para PDF</button>
+            </div>
+            <div class="card" id="barCard" data-period="Semanal">
                 <h3>Vendedores que menos venderam</h3>
                 <div class="chart-container">
                     <canvas id="barDataVendedoresQueMenosVenderam"></canvas>
@@ -140,7 +174,7 @@
                     para PDF</button>
             </div>
 
-            <div class="card" id="mixedCard">
+            <div class="card" id="mixedCard" data-period="Semanal">
                 <h3>Produtos que mais venderam</h3>
                 <div class="chart-container">
                     <canvas id="mixedDataProdutosMaisVendidos"></canvas>
@@ -155,7 +189,7 @@
                     PDF</button>
             </div>
 
-            <div class="card" id="mixedCard">
+            <div class="card" id="mixedCard" data-period="Semanal">
                 <h3>Produtos que menos venderam</h3>
                 <div class="chart-container">
                     <canvas id="mixedDataProdutosMenosVendidos"></canvas>
@@ -170,7 +204,7 @@
                     PDF</button>
             </div>
 
-            <div class="card" id="barCard">
+            <div class="card" id="barCard" data-period="Semanal">
                 <h3>Clientes que mais Compraram</h3>
                 <div class="chart-container">
                     <canvas id="barDataClientesQueMaisCompraram"></canvas>
@@ -185,21 +219,19 @@
                     PDF</button>
             </div>
 
-            <div class="card" id="barCard">
+            <div class="card" id="barCard" data-period="Semanal">
                 <h3>Vendas</h3>
                 <div class="chart-container">
                     <canvas id="barChart"></canvas>
                 </div>
                 <p class="chart-descricao" id="descVendas">Gráfico geral de vendas ao longo do período nos últimos 7
                     dias. </p>
-                <button class="botao-exportacao"
-                    onclick="exportarParaCSV(vendas, 'vendas_ultimos_7_dias.csv')">Exportar
+                <button class="botao-exportacao" onclick="exportarParaCSV(vendas, 'vendas_ultimos_7_dias.csv')">Exportar
                     para CSV</button>
-                <button class="botao-exportacao"
-                    onclick="exportarParaPDF(vendas, 'vendas_ultimos_7_dias.pdf')">Exportar
+                <button class="botao-exportacao" onclick="exportarParaPDF(vendas, 'vendas_ultimos_7_dias.pdf')">Exportar
                     para PDF</button>
             </div>
-            <div class="card" id="lineCard">
+            <div class="card" id="lineCard" data-period="Semanal">
                 <h3>Marketing</h3>
                 <div class="chart-container">
                     <canvas id="lineChart"></canvas>
@@ -207,7 +239,7 @@
                 <p class="chart-descricao" id="marketing">Dados relacionados ao impacto das campanhas de marketing nos
                     últimos 7 dias.</p>
             </div>
-            <div class="card" id="pieCard">
+            <div class="card" id="pieCard" data-period="Semanal">
                 <h3>Financeiro</h3>
                 <div class="chart-container">
                     <canvas id="pieChart"></canvas>

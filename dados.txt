@@ -10,6 +10,12 @@ Valor pago; 5000; Valor recepido; 7000; Lucro; 2000;
 vendedoresquemaisvenderam
 João; 5000; Maria; 4500; Paulo; 3000; Mario; 5000; Cauã; 2500
 
+vendedoresquemaisvenderammensal
+João; 4000; Maria; 500; Paulo; 2000; Mario; 4000; Cauã; 1500
+
+vendedoresquemaisvenderamanual
+João; 4000; Maria; 3500; Paulo; 2000; Mario; 4000; Cauã; 1500
+
 vendedoresquemenosvenderam
 Lucas; 1000; Ana; 800; Fabio; 600; João Pedro; 400;
 
