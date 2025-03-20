@@ -159,8 +159,9 @@
                     onclick="exportarParaPDF(vendedoresQueMaisVenderamDados, 'vendedores_que_mais_venderam.pdf')">Exportar
                     para PDF</button>
             </div>
+
             <div class="card" id="barCard" data-period="Semanal">
-                <h3>Vendedores que menos venderam</h3>
+                <h3>Vendedores que menos venderam Semanal</h3>
                 <div class="chart-container">
                     <canvas id="barDataVendedoresQueMenosVenderam"></canvas>
                 </div>
@@ -173,9 +174,37 @@
                     onclick="exportarParaPDF(vendedoresQueMenosVenderam, 'vendedores_que_menos_venderam.pdf')">Exportar
                     para PDF</button>
             </div>
+            <div class="card" id="barCard" data-period="Mensal">
+                <h3>Vendedores que menos venderam Mensal</h3>
+                <div class="chart-container">
+                    <canvas id="barDataVendedoresQueMenosVenderamMensal"></canvas>
+                </div>
+                <p class="chart-descricao" id="descVendedorMenosVenderam">Aqui são apresentados os vendedores que menos
+                    venderam nos últimos 30 dias.</p>
+                <button class="botao-exportacao"
+                    onclick="exportarParaCSV(vendedoresQueMenosVenderamMensal, 'vendedores_que_menos_venderam_mensal.csv')">Exportar
+                    para CSV</button>
+                <button class="botao-exportacao"
+                    onclick="exportarParaPDF(vendedoresQueMenosVenderamMensal, 'vendedores_que_menos_venderam_mensal.pdf')">Exportar
+                    para PDF</button>
+            </div>
+            <div class="card" id="barCard" data-period="Anual">
+                <h3>Vendedores que menos venderam Anual</h3>
+                <div class="chart-container">
+                    <canvas id="barDataVendedoresQueMenosVenderamAnual"></canvas>
+                </div>
+                <p class="chart-descricao" id="descVendedorMenosVenderam">Aqui são apresentados os vendedores que menos
+                    venderam nos últimos 365 dias.</p>
+                <button class="botao-exportacao"
+                    onclick="exportarParaCSV(vendedoresQueMenosVenderamAnual, 'vendedores_que_menos_venderam_anual.csv')">Exportar
+                    para CSV</button>
+                <button class="botao-exportacao"
+                    onclick="exportarParaPDF(vendedoresQueMenosVenderamAnual, 'vendedores_que_menos_venderam_anual.pdf')">Exportar
+                    para PDF</button>
+            </div>
 
             <div class="card" id="mixedCard" data-period="Semanal">
-                <h3>Produtos que mais venderam</h3>
+                <h3>Produtos que mais venderam Semanal</h3>
                 <div class="chart-container">
                     <canvas id="mixedDataProdutosMaisVendidos"></canvas>
                 </div>
@@ -188,9 +217,37 @@
                     onclick="exportarParaPDF(produtosMaisVendidos, 'produtos_mais_vendidos.pdf')">Exportar para
                     PDF</button>
             </div>
+            <div class="card" id="mixedCard" data-period="Mensal">
+                <h3>Produtos que mais venderam Mensal</h3>
+                <div class="chart-container">
+                    <canvas id="mixedDataProdutosMaisVendidosMensal"></canvas>
+                </div>
+                <p class="chart-descricao" id="descProdutoMaisVendido">Este gráfico exibe os produtos que tiveram o
+                    maior volume de vendas nos últimos 30 dias.</p>
+                <button class="botao-exportacao"
+                    onclick="exportarParaCSV(produtosMaisVendidosMensal, 'produtos_mais_vendidos_mensal.csv')">Exportar para
+                    CSV</button>
+                <button class="botao-exportacao"
+                    onclick="exportarParaPDF(produtosMaisVendidosMensal, 'produtos_mais_vendidos_mensal.pdf')">Exportar para
+                    PDF</button>
+            </div>
+            <div class="card" id="mixedCard" data-period="Anual">
+                <h3>Produtos que mais venderam Anual</h3>
+                <div class="chart-container">
+                    <canvas id="mixedDataProdutosMaisVendidosAnual"></canvas>
+                </div>
+                <p class="chart-descricao" id="descProdutoMaisVendido">Este gráfico exibe os produtos que tiveram o
+                    maior volume de vendas nos últimos 365 dias.</p>
+                <button class="botao-exportacao"
+                    onclick="exportarParaCSV(produtosMaisVendidosAnual, 'produtos_mais_vendidos_anual.csv')">Exportar para
+                    CSV</button>
+                <button class="botao-exportacao"
+                    onclick="exportarParaPDF(produtosMaisVendidosAnual, 'produtos_mais_vendidos_anual.pdf')">Exportar para
+                    PDF</button>
+            </div>
 
             <div class="card" id="mixedCard" data-period="Semanal">
-                <h3>Produtos que menos venderam</h3>
+                <h3>Produtos que menos venderam Semanal</h3>
                 <div class="chart-container">
                     <canvas id="mixedDataProdutosMenosVendidos"></canvas>
                 </div>
@@ -203,9 +260,38 @@
                     onclick="exportarParaPDF(produtosMenosVendidos, 'produtos_menos_vendidos.pdf')">Exportar para
                     PDF</button>
             </div>
+            <div class="card" id="mixedCard" data-period="Mensal">
+                <h3>Produtos que menos venderam Mensal</h3>
+                <div class="chart-container">
+                    <canvas id="mixedDataProdutosMenosVendidosMensal"></canvas>
+                </div>
+                <p class="chart-descricao" id="descProdutoMenosVendido">Aqui são mostrados os produtos com menor número
+                    de vendas nos últimos 30 dias.</p>
+                <button class="botao-exportacao"
+                    onclick="exportarParaCSV(produtosMenosVendidosMensal, 'produtos_menos_vendidos_mensal.csv')">Exportar para
+                    CSV</button>
+                <button class="botao-exportacao"
+                    onclick="exportarParaPDF(produtosMenosVendidosMensal, 'produtos_menos_vendidos_mensal.pdf')">Exportar para
+                    PDF</button>
+            </div>
+            <div class="card" id="mixedCard" data-period="Anual">
+                <h3>Produtos que menos venderam Anual</h3>
+                <div class="chart-container">
+                    <canvas id="mixedDataProdutosMenosVendidosAnual"></canvas>
+                </div>
+                <p class="chart-descricao" id="descProdutoMenosVendido">Aqui são mostrados os produtos com menor número
+                    de vendas nos últimos 365 dias.</p>
+                <button class="botao-exportacao"
+                    onclick="exportarParaCSV(produtosMenosVendidosAnual, 'produtos_menos_vendidos_anual.csv')">Exportar para
+                    CSV</button>
+                <button class="botao-exportacao"
+                    onclick="exportarParaPDF(produtosMenosVendidosAnual, 'produtos_menos_vendidos_anual.pdf')">Exportar para
+                    PDF</button>
+            </div>
+
 
             <div class="card" id="barCard" data-period="Semanal">
-                <h3>Clientes que mais Compraram</h3>
+                <h3>Clientes que mais Compraram Semanal</h3>
                 <div class="chart-container">
                     <canvas id="barDataClientesQueMaisCompraram"></canvas>
                 </div>
@@ -218,38 +304,97 @@
                     onclick="exportarParaPDF(clientesQueMaisCompraram, 'clientes_que_mais_compraram.pdf')">Exportar para
                     PDF</button>
             </div>
+            <div class="card" id="barCard" data-period="Mensal">
+                <h3>Clientes que mais Compraram Mensal</h3>
+                <div class="chart-container">
+                    <canvas id="barDataClientesQueMaisCompraramMensal"></canvas>
+                </div>
+                <p class="chart-descricao" id="descClientesQueMaisCompraram">Apresenta os clientes que mais realizaram
+                    compras nos últimos 30 dias</p>
+                <button class="botao-exportacao"
+                    onclick="exportarParaCSV(clientesQueMaisCompraramMensal, 'clientes_que_mais_compraram_mensal.csv')">Exportar para
+                    CSV</button>
+                <button class="botao-exportacao"
+                    onclick="exportarParaPDF(clientesQueMaisCompraramMensal, 'clientes_que_mais_compraram_mensal.pdf')">Exportar para
+                    PDF</button>
+            </div>
+            <div class="card" id="barCard" data-period="Anual">
+                <h3>Clientes que mais Compraram Anual</h3>
+                <div class="chart-container">
+                    <canvas id="barDataClientesQueMaisCompraramAnual"></canvas>
+                </div>
+                <p class="chart-descricao" id="descClientesQueMaisCompraram">Apresenta os clientes que mais realizaram
+                    compras nos últimos 7 dias</p>
+                <button class="botao-exportacao"
+                    onclick="exportarParaCSV(clientesQueMaisCompraramAnual, 'clientes_que_mais_compraram_anual.csv')">Exportar para
+                    CSV</button>
+                <button class="botao-exportacao"
+                    onclick="exportarParaPDF(clientesQueMaisCompraramAnual, 'clientes_que_mais_compraram_anual.pdf')">Exportar para
+                    PDF</button>
+            </div>
 
             <div class="card" id="barCard" data-period="Semanal">
-                <h3>Vendas</h3>
+                <h3>Vendas Semanais</h3>
                 <div class="chart-container">
-                    <canvas id="barChart"></canvas>
+                    <canvas id="vendas"></canvas>
                 </div>
                 <p class="chart-descricao" id="descVendas">Gráfico geral de vendas ao longo do período nos últimos 7
                     dias. </p>
-                <button class="botao-exportacao" onclick="exportarParaCSV(vendas, 'vendas_ultimos_7_dias.csv')">Exportar
+                <button class="botao-exportacao" onclick="exportarParaCSV(vendas, 'vendas_semanais.csv')">Exportar
                     para CSV</button>
-                <button class="botao-exportacao" onclick="exportarParaPDF(vendas, 'vendas_ultimos_7_dias.pdf')">Exportar
+                <button class="botao-exportacao" onclick="exportarParaPDF(vendas, 'vendas_semanais.pdf')">Exportar
                     para PDF</button>
             </div>
-            <div class="card" id="lineCard" data-period="Semanal">
-                <h3>Marketing</h3>
+            <div class="card" id="barCard" data-period="Mensal">
+                <h3>Vendas Mensais</h3>
                 <div class="chart-container">
-                    <canvas id="lineChart"></canvas>
+                    <canvas id="vendasMensais"></canvas>
                 </div>
-                <p class="chart-descricao" id="marketing">Dados relacionados ao impacto das campanhas de marketing nos
-                    últimos 7 dias.</p>
+                <p class="chart-descricao" id="descVendas">Gráfico geral de vendas ao longo do período nos últimos 7
+                    dias. </p>
+                <button class="botao-exportacao" onclick="exportarParaCSV(vendasMensais, 'vendas_ultimos_mensais.csv')">Exportar
+                    para CSV</button>
+                <button class="botao-exportacao" onclick="exportarParaPDF(vendasMensais, 'vendas_ultimos_mensais.pdf')">Exportar
+                    para PDF</button>
             </div>
+
             <div class="card" id="pieCard" data-period="Semanal">
-                <h3>Financeiro</h3>
+                <h3>Financeiro Semanal</h3>
                 <div class="chart-container">
-                    <canvas id="pieChart"></canvas>
+                    <canvas id="financeiro"></canvas>
                 </div>
                 <p class="chart-descricao" id="financeiro">Distribuição financeira da empresa nos últimos 7 dias.</p>
+                <button class="botao-exportacao" onclick="exportarParaCSV(financeiro, 'financeiro_semanal.csv')">Exportar
+                    para CSV</button>
+                <button class="botao-exportacao" onclick="exportarParaPDF(financeiro, 'financeiro_semanal.pdf')">Exportar
+                    para PDF</button>
+            </div>
+            <div class="card" id="pieCard" data-period="Mensal">
+                <h3>Financeiro Mensal</h3>
+                <div class="chart-container">
+                    <canvas id="financeiroMensal"></canvas>
+                </div>
+                <p class="chart-descricao" id="financeiro">Distribuição financeira da empresa nos últimos 30 dias.</p>
+                <button class="botao-exportacao" onclick="exportarParaCSV(financeiroMensal, 'financeiro_mensal.csv')">Exportar
+                    para CSV</button>
+                <button class="botao-exportacao" onclick="exportarParaPDF(financeiroMensal, 'financeiro_mensal.pdf')">Exportar
+                    para PDF</button>
+            </div>
+            <div class="card" id="pieCard" data-period="Anual">
+                <h3>Financeiro Anual</h3>
+                <div class="chart-container">
+                    <canvas id="financeiroAnual"></canvas>
+                </div>
+                <p class="chart-descricao" id="financeiro">Distribuição financeira da empresa nos últimos 365 dias.</p>
+                <button class="botao-exportacao" onclick="exportarParaCSV(financeiroAnual, 'financeiro_anual.csv')">Exportar
+                    para CSV</button>
+                <button class="botao-exportacao" onclick="exportarParaPDF(financeiroAnual, 'financeiro_anual.pdf')">Exportar
+                    para PDF</button>
             </div>
         </div>
     </div>
     <script src="js/configuracoesMenu.js"></script>
-    <script src="js/graficos.js"></script>
+    <script src="js/graficos.js" defer></script>
     <script src="js/modoNoturno.js"></script>
     <script src="js/filtro.js"></script>
 </body>
