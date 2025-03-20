@@ -27,3 +27,19 @@ function filterCards(period) {
         }
     });
 }
+
+function filterByCategory(category) {
+    var cards = document.querySelectorAll(".card");
+
+    cards.forEach(card => {
+        if (category === "" || card.dataset.category === category) {
+            card.style.opacity = "1";
+            card.style.transform = "scale(1)";
+            card.style.display = "block";
+        } else {
+            card.style.opacity = "0";
+            card.style.transform = "scale(0.9)";
+            setTimeout(() => card.style.display = "none", 300);
+        }
+    });
+}

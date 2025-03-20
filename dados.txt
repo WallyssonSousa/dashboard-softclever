@@ -5,13 +5,13 @@ vendasmensais
 27/06/2024; 41755.6400; 28/06/2024; 53778.2600; 28/06/2024; 104502.7800; 28/06/2024; 127180.6100; 28/06/2024; 49206.7600;
 
 financeiro
-Valor pago; 5000; Valor recepido; 7000; Lucro; 2000;
+Valor pago; 5000; Valor recepido; 7000; Diferença; 3000;
 
 financeiromensal
-Valor pago; 5000; Valor recepido; 7000; Lucro; 2000;
+Valor pago; 5000; Valor recepido; 7000; Diferença; 2000;
 
 financeiroanual
-Valor pago; 5000; Valor recepido; 7000; Lucro; 2000;
+Valor pago; 5000; Valor recepido; 7000; Diferença; 2000;
 
 vendedoresquemaisvenderam
 João; 5000; Maria; 4500; Paulo; 3000; Mario; 5000; Cauã; 2500

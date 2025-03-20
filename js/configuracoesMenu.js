@@ -7,3 +7,5 @@ document.getElementById('fecharConfiguracoes').addEventListener('click', functio
     document.getElementById('configuracoesFlutuante').style.right = '-100%';
 });
 
+
+

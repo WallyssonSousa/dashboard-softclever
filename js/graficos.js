@@ -215,7 +215,7 @@ function atualizarGraficos(dados) {
         vendas = {
             labels: dados.vendas.labels,
             datasets: [{
-                label: 'Últimos 7 Dias',
+                label: 'Vendas da semana',
                 data: dados.vendas.valores,
                 backgroundColor: '#004767',
                 borderColor: '#03bfcb',
@@ -228,7 +228,7 @@ function atualizarGraficos(dados) {
         vendasMensais = {
             labels: dados.vendasMensais.labels,
             datasets: [{
-                label: 'Últimos 7 Dias',
+                label: 'Vendas do mês',
                 data: dados.vendasMensais.valores,
                 backgroundColor: '#004767',
                 borderColor: '#03bfcb',
@@ -238,31 +238,36 @@ function atualizarGraficos(dados) {
     }
 
     if (dados.financeiro.labels.length > 0) {
+        const coresOriginais = ['#004767', '#03bfcb', '#2c3e50'];
         financeiro = {
             labels: dados.financeiro.labels,
             datasets: [{
                 data: dados.financeiro.valores,
-                backgroundColor: ['#004767', '#03bfcb', '#2c3e50']
+            backgroundColor: dados.financeiro.valores.map((valor, index) => valor < 0 ? '#FF0000' : coresOriginais[index % coresOriginais.length])
             }]
         };
     }
 
     if (dados.financeiroMensal.labels.length > 0) {
+        const coresOriginais = ['#004767', '#03bfcb', '#2c3e50'];
         financeiroMensal = {
             labels: dados.financeiroMensal.labels,
             datasets: [{
                 data: dados.financeiroMensal.valores,
-                backgroundColor: ['#004767', '#03bfcb', '#2c3e50']
+            backgroundColor: dados.financeiroMensal.valores.map(
+                (valor, index) => valor < 0 ? '#FF0000' : coresOriginais[index % coresOriginais.length]
+            )
             }]
         };
     }
 
     if (dados.financeiroAnual.labels.length > 0) {
+        const coresOriginais = ['#004767', '#03bfcb', '#2c3e50'];
         financeiroAnual = {
             labels: dados.financeiroAnual.labels,
             datasets: [{
-                data: dados.financeiroAnual.valores,
-                backgroundColor: ['#004767', '#03bfcb', '#2c3e50']
+            data: dados.financeiroAnual.valores,
+            backgroundColor: dados.financeiroAnual.valores.map((valor, index) => valor < 0 ? '#FF0000' : coresOriginais[index % coresOriginais.length])
             }]
         };
     }
@@ -271,7 +276,7 @@ function atualizarGraficos(dados) {
         barDataVendedoresQueMaisVenderam = {
             labels: dados.vendedoresQueMaisVenderam.labels,
             datasets: [{
-                label: 'Vendedores que Mais Venderam',
+                label: 'Vendedores que mais venderam na semana',
                 data: dados.vendedoresQueMaisVenderam.valores,
                 backgroundColor: 'rgb(0, 71, 103)',
                 borderColor: 'rgb(3, 191, 203)',
@@ -284,7 +289,7 @@ function atualizarGraficos(dados) {
         barDataVendedoresQueMaisVenderamMensal = {
             labels: dados.vendedoresQueMaisVenderamMensal.labels,
             datasets: [{
-                label: 'Vendedores que Mais Venderam',
+                label: 'Vendedores que mais venderam no mês',
                 data: dados.vendedoresQueMaisVenderamMensal.valores,
                 backgroundColor: 'rgb(0, 71, 103)',
                 borderColor: 'rgb(3, 191, 203)',
@@ -297,7 +302,7 @@ function atualizarGraficos(dados) {
         barDataVendedoresQueMaisVenderamAnual = {
             labels: dados.vendedoresQueMaisVenderamAnual.labels,
             datasets: [{
-                label: 'Vendedores que Mais Venderam',
+                label: 'Vendedores que mais venderam no ano',
                 data: dados.vendedoresQueMaisVenderamAnual.valores,
                 backgroundColor: 'rgb(0, 71, 103)',
                 borderColor: 'rgb(3, 191, 203)',
@@ -310,7 +315,7 @@ function atualizarGraficos(dados) {
         barDataVendedoresQueMenosVenderam = {
             labels: dados.vendedoresQueMenosVenderam.labels,
             datasets: [{
-                label: 'Vendedores que Menos Venderam',
+                label: 'Vendedores que menos venderam na semana',
                 data: dados.vendedoresQueMenosVenderam.valores,
                 backgroundColor: 'rgb(0, 71, 103)',
                 borderColor: 'rgb(3, 191, 203)',
@@ -322,7 +327,7 @@ function atualizarGraficos(dados) {
         barDataVendedoresQueMenosVenderamMensal = {
             labels: dados.vendedoresQueMenosVenderamMensal.labels,
             datasets: [{
-                label: 'Vendedores que Menos Venderam',
+                label: 'Vendedores que menos venderam no mês',
                 data: dados.vendedoresQueMenosVenderamMensal.valores,
                 backgroundColor: 'rgb(0, 71, 103)',
                 borderColor: 'rgb(3, 191, 203)',
@@ -334,7 +339,7 @@ function atualizarGraficos(dados) {
         barDataVendedoresQueMenosVenderamAnual = {
             labels: dados.vendedoresQueMenosVenderamAnual.labels,
             datasets: [{
-                label: 'Vendedores que Menos Venderam',
+                label: 'Vendedores que menos venderam no ano',
                 data: dados.vendedoresQueMenosVenderamAnual.valores,
                 backgroundColor: 'rgb(0, 71, 103)',
                 borderColor: 'rgb(3, 191, 203)',
@@ -348,7 +353,7 @@ function atualizarGraficos(dados) {
             labels: dados.produtosMaisVendidos.labels,
             datasets: [
                 {
-                    label: 'Produtos que Mais Venderam',
+                    label: 'Produtos que mais venderam na semana',
                     data: dados.produtosMaisVendidos.valores,
                     backgroundColor: 'rgb(0, 71, 103)',
                     borderColor: 'rgb(3, 191, 203)',
@@ -364,7 +369,7 @@ function atualizarGraficos(dados) {
             labels: dados.produtosMaisVendidosMensal.labels,
             datasets: [
                 {
-                    label: 'Produtos que Mais Venderam Mensal',
+                    label: 'Produtos que mais venderam na mês',
                     data: dados.produtosMaisVendidosMensal.valores,
                     backgroundColor: 'rgb(0, 71, 103)',
                     borderColor: 'rgb(3, 191, 203)',
@@ -380,7 +385,7 @@ function atualizarGraficos(dados) {
             labels: dados.produtosMaisVendidosAnual.labels,
             datasets: [
                 {
-                    label: 'Produtos que Mais Venderam',
+                    label: 'Produtos que mais venderam na ano',
                     data: dados.produtosMaisVendidosAnual.valores,
                     backgroundColor: 'rgb(0, 71, 103)',
                     borderColor: 'rgb(3, 191, 203)',
@@ -396,7 +401,7 @@ function atualizarGraficos(dados) {
             labels: dados.produtosMenosVendidos.labels,
             datasets: [
                 {
-                    label: 'Produtos que Mais Venderam',
+                    label: 'Produtos que menos venderam na semana',
                     data: dados.produtosMenosVendidos.valores,
                     backgroundColor: 'rgb(0, 71, 103)',
                     borderColor: 'rgb(3, 191, 203)',
@@ -411,7 +416,7 @@ function atualizarGraficos(dados) {
             labels: dados.produtosMenosVendidosMensal.labels,
             datasets: [
                 {
-                    label: 'Produtos que Mais Venderam',
+                    label: 'Produtos que menos venderam no mês',
                     data: dados.produtosMenosVendidosMensal.valores,
                     backgroundColor: 'rgb(0, 71, 103)',
                     borderColor: 'rgb(3, 191, 203)',
@@ -426,7 +431,7 @@ function atualizarGraficos(dados) {
             labels: dados.produtosMenosVendidosAnual.labels,
             datasets: [
                 {
-                    label: 'Produtos que Mais Venderam',
+                    label: 'Produtos que menos venderam no ano',
                     data: dados.produtosMenosVendidosAnual.valores,
                     backgroundColor: 'rgb(0, 71, 103)',
                     borderColor: 'rgb(3, 191, 203)',
@@ -441,7 +446,7 @@ function atualizarGraficos(dados) {
         barDataClientesQueMaisCompraram = {
             labels: dados.clientesQueMaisCompraram.labels,
             datasets: [{
-                label: 'Clientes que Mais Compraram',
+                label: 'Clientes que mais compraram na semana',
                 data: dados.clientesQueMaisCompraram.valores,
                 backgroundColor: 'rgb(0, 71, 103)',
                 borderColor: 'rgb(3, 191, 203)',
@@ -454,7 +459,7 @@ function atualizarGraficos(dados) {
         barDataClientesQueMaisCompraramMensal = {
             labels: dados.clientesQueMaisCompraramMensal.labels,
             datasets: [{
-                label: 'Clientes que Mais Compraram',
+                label: 'Clientes que mais compraram no mês',
                 data: dados.clientesQueMaisCompraramMensal.valores,
                 backgroundColor: 'rgb(0, 71, 103)',
                 borderColor: 'rgb(3, 191, 203)',
@@ -467,7 +472,7 @@ function atualizarGraficos(dados) {
         barDataClientesQueMaisCompraramAnual = {
             labels: dados.clientesQueMaisCompraramAnual.labels,
             datasets: [{
-                label: 'Clientes que Mais Compraram',
+                label: 'Clientes que mais compraram no ano',
                 data: dados.clientesQueMaisCompraramAnual.valores,
                 backgroundColor: 'rgb(0, 71, 103)',
                 borderColor: 'rgb(3, 191, 203)',
