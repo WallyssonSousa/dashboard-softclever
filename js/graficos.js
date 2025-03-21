@@ -20,11 +20,11 @@ async function carregarDados() {
         console.log('Linhas lidas do arquivo:', linhas);
 
         const dados = {
-            vendas: {labels: [], valores: []},
-            vendasMensais: {labels: [], valores: []},
+            vendas: { labels: [], valores: [] },
+            vendasMensais: { labels: [], valores: [] },
             financeiro: { labels: [], valores: [] },
-            financeiroMensal: {labels: [], valores: []},
-            financeiroAnual: {labels: [], valores: []},
+            financeiroMensal: { labels: [], valores: [] },
+            financeiroAnual: { labels: [], valores: [] },
             vendedoresQueMaisVenderam: { labels: [], valores: [] },
             vendedoresQueMaisVenderamMensal: { labels: [], valores: [] },
             vendedoresQueMaisVenderamAnual: { labels: [], valores: [] },
@@ -37,9 +37,9 @@ async function carregarDados() {
             produtosMenosVendidos: { labels: [], valores: [] },
             produtosMenosVendidosMensal: { labels: [], valores: [] },
             produtosMenosVendidosAnual: { labels: [], valores: [] },
-            clientesQueMaisCompraram: { labels: [], valores: [] }, 
-            clientesQueMaisCompraramMensal: { labels: [], valores: [] }, 
-            clientesQueMaisCompraramAnual: { labels: [], valores: [] }, 
+            clientesQueMaisCompraram: { labels: [], valores: [] },
+            clientesQueMaisCompraramMensal: { labels: [], valores: [] },
+            clientesQueMaisCompraramAnual: { labels: [], valores: [] },
         };
 
         let tipo = '';
@@ -50,10 +50,10 @@ async function carregarDados() {
             if (['vendas', 'vendasmensais', 'financeiro', 'financeiromensal', 'financeiroanual', 'vendedoresquemaisvenderam',
                 'vendedoresquemaisvenderammensal', 'vendedoresquemaisvenderamanual',
                 'vendedoresquemenosvenderam', 'vendedoresquemenosvenderammensal', 'vendedoresquemenosvenderamanual',
-                 'produtosquemaisvenderam', 'produtosquemaisvenderammensal', 'produtosquemaisvenderamanual',
-                 'produtosquemenosvenderam', 'produtosquemenosvenderammensal', 'produtosquemenosvenderamanual',
+                'produtosquemaisvenderam', 'produtosquemaisvenderammensal', 'produtosquemaisvenderamanual',
+                'produtosquemenosvenderam', 'produtosquemenosvenderammensal', 'produtosquemenosvenderamanual',
                 'clientesquemaiscompraram', 'clientesquemaiscomprarammensal', 'clientesquemaiscompraramanual'
-                ].includes(linha.toLowerCase())) {
+            ].includes(linha.toLowerCase())) {
                 tipo = linha.toLowerCase();
                 console.log(`Tipo atualizado para: ${tipo}`);
             } else {
@@ -74,12 +74,12 @@ async function carregarDados() {
                         dados.financeiro.labels.push(partes[i]);
                         dados.financeiro.valores.push(parseFloat(partes[i + 1]));
                     }
-                } else if(tipo === 'financeiromensal'){
+                } else if (tipo === 'financeiromensal') {
                     for (let i = 0; i < partes.length; i += 2) {
                         dados.financeiroMensal.labels.push(partes[i]);
                         dados.financeiroMensal.valores.push(parseFloat(partes[i + 1]));
                     }
-                } else if (tipo === 'financeiroanual'){
+                } else if (tipo === 'financeiroanual') {
                     for (let i = 0; i < partes.length; i += 2) {
                         dados.financeiroAnual.labels.push(partes[i]);
                         dados.financeiroAnual.valores.push(parseFloat(partes[i + 1]));
@@ -106,12 +106,12 @@ async function carregarDados() {
                         dados.vendedoresQueMenosVenderam.labels.push(partes[i]);
                         dados.vendedoresQueMenosVenderam.valores.push(parseFloat(partes[i + 1]));
                     }
-                } else if(tipo === 'vendedoresquemenosvenderammensal'){
+                } else if (tipo === 'vendedoresquemenosvenderammensal') {
                     for (let i = 0; i < partes.length; i += 2) {
                         dados.vendedoresQueMenosVenderamMensal.labels.push(partes[i]);
                         dados.vendedoresQueMenosVenderamMensal.valores.push(parseFloat(partes[i + 1]));
                     }
-                } else if (tipo === 'vendedoresquemenosvenderamanual'){
+                } else if (tipo === 'vendedoresquemenosvenderamanual') {
                     for (let i = 0; i < partes.length; i += 2) {
                         dados.vendedoresQueMenosVenderamAnual.labels.push(partes[i]);
                         dados.vendedoresQueMenosVenderamAnual.valores.push(parseFloat(partes[i + 1]));
@@ -122,55 +122,55 @@ async function carregarDados() {
                         dados.produtosMaisVendidos.labels.push(partes[i]);
                         dados.produtosMaisVendidos.valores.push(parseFloat(partes[i + 1]));
                     }
-                } else if (tipo === 'produtosquemaisvenderammensal'){
+                } else if (tipo === 'produtosquemaisvenderammensal') {
                     for (let i = 0; i < partes.length; i += 2) {
                         dados.produtosMaisVendidosMensal.labels.push(partes[i]);
                         dados.produtosMaisVendidosMensal.valores.push(parseFloat(partes[i + 1]));
                     }
-                } else if(tipo === 'produtosquemaisvenderamanual'){
+                } else if (tipo === 'produtosquemaisvenderamanual') {
                     for (let i = 0; i < partes.length; i += 2) {
                         dados.produtosMaisVendidosAnual.labels.push(partes[i]);
                         dados.produtosMaisVendidosAnual.valores.push(parseFloat(partes[i + 1]));
                     }
-                } 
+                }
                 else if (tipo === 'produtosquemenosvenderam') { // Ajustado para plural
                     for (let i = 0; i < partes.length; i += 2) {
                         dados.produtosMenosVendidos.labels.push(partes[i]);
                         dados.produtosMenosVendidos.valores.push(parseFloat(partes[i + 1]));
                     }
-                } else if(tipo === 'produtosquemenosvenderammensal'){
+                } else if (tipo === 'produtosquemenosvenderammensal') {
                     for (let i = 0; i < partes.length; i += 2) {
                         dados.produtosMenosVendidosMensal.labels.push(partes[i]);
                         dados.produtosMenosVendidosMensal.valores.push(parseFloat(partes[i + 1]));
                     }
-                } else if(tipo === 'produtosquemenosvenderamanual'){
+                } else if (tipo === 'produtosquemenosvenderamanual') {
                     for (let i = 0; i < partes.length; i += 2) {
                         dados.produtosMenosVendidosAnual.labels.push(partes[i]);
                         dados.produtosMenosVendidosAnual.valores.push(parseFloat(partes[i + 1]));
                     }
-                } 
+                }
                 else if (tipo === 'clientesquemaiscompraram') {
                     for (let i = 0; i < partes.length; i += 2) {
                         dados.clientesQueMaisCompraram.labels.push(partes[i]);
                         dados.clientesQueMaisCompraram.valores.push(parseFloat(partes[i + 1]));
                     }
-                } else if (tipo === 'clientesquemaiscomprarammensal'){
+                } else if (tipo === 'clientesquemaiscomprarammensal') {
                     for (let i = 0; i < partes.length; i += 2) {
                         dados.clientesQueMaisCompraramMensal.labels.push(partes[i]);
                         dados.clientesQueMaisCompraramMensal.valores.push(parseFloat(partes[i + 1]));
                     }
-                } else if(tipo === 'clientesquemaiscompraramanual'){
+                } else if (tipo === 'clientesquemaiscompraramanual') {
                     for (let i = 0; i < partes.length; i += 2) {
                         dados.clientesQueMaisCompraramAnual.labels.push(partes[i]);
                         dados.clientesQueMaisCompraramAnual.valores.push(parseFloat(partes[i + 1]));
                     }
                 }
-                 else if (tipo === 'vendas') {
+                else if (tipo === 'vendas') {
                     for (let i = 0; i < partes.length; i += 2) {
                         dados.vendas.labels.push(partes[i]);
                         dados.vendas.valores.push(parseFloat(partes[i + 1]));
                     }
-                } else if (tipo === 'vendasmensais'){
+                } else if (tipo === 'vendasmensais') {
                     for (let i = 0; i < partes.length; i += 2) {
                         dados.vendasMensais.labels.push(partes[i]);
                         dados.vendasMensais.valores.push(parseFloat(partes[i + 1]));
@@ -212,8 +212,12 @@ let financeiroAnual = [];
 
 function atualizarGraficos(dados) {
     if (dados.vendas.labels.length > 0) {
+        const labelsOriginais = dados.vendas.labels;
+        const labelsReduzidos = labelsOriginais.map(label =>
+            label.split(' ').slice(0, 3).join(' ')
+        );
         vendas = {
-            labels: dados.vendas.labels,
+            labels: labelsOriginais,
             datasets: [{
                 label: 'Vendas da semana',
                 data: dados.vendas.valores,
@@ -225,8 +229,12 @@ function atualizarGraficos(dados) {
     }
 
     if (dados.vendasMensais.labels.length > 0) {
+        const labelsOriginais = dados.vendasMensais.labels;
+        const labelsReduzidos = labelsOriginais.map(label =>
+            label.split(' ').slice(0, 3).join(' ')
+        );
         vendasMensais = {
-            labels: dados.vendasMensais.labels,
+            labels: labelsOriginais,
             datasets: [{
                 label: 'Vendas do mês',
                 data: dados.vendasMensais.valores,
@@ -243,7 +251,7 @@ function atualizarGraficos(dados) {
             labels: dados.financeiro.labels,
             datasets: [{
                 data: dados.financeiro.valores,
-            backgroundColor: dados.financeiro.valores.map((valor, index) => valor < 0 ? '#FF0000' : coresOriginais[index % coresOriginais.length])
+                backgroundColor: dados.financeiro.valores.map((valor, index) => valor < 0 ? '#FF0000' : coresOriginais[index % coresOriginais.length])
             }]
         };
     }
@@ -254,9 +262,9 @@ function atualizarGraficos(dados) {
             labels: dados.financeiroMensal.labels,
             datasets: [{
                 data: dados.financeiroMensal.valores,
-            backgroundColor: dados.financeiroMensal.valores.map(
-                (valor, index) => valor < 0 ? '#FF0000' : coresOriginais[index % coresOriginais.length]
-            )
+                backgroundColor: dados.financeiroMensal.valores.map(
+                    (valor, index) => valor < 0 ? '#FF0000' : coresOriginais[index % coresOriginais.length]
+                )
             }]
         };
     }
@@ -266,15 +274,19 @@ function atualizarGraficos(dados) {
         financeiroAnual = {
             labels: dados.financeiroAnual.labels,
             datasets: [{
-            data: dados.financeiroAnual.valores,
-            backgroundColor: dados.financeiroAnual.valores.map((valor, index) => valor < 0 ? '#FF0000' : coresOriginais[index % coresOriginais.length])
+                data: dados.financeiroAnual.valores,
+                backgroundColor: dados.financeiroAnual.valores.map((valor, index) => valor < 0 ? '#FF0000' : coresOriginais[index % coresOriginais.length])
             }]
         };
     }
 
     if (dados.vendedoresQueMaisVenderam.labels.length > 0) {
+        const labelsOriginais = dados.vendedoresQueMaisVenderam.labels;
+        const labelsReduzidos = labelsOriginais.map(label =>
+            label.split(' ').slice(0, 3).join(' ')
+        );
         barDataVendedoresQueMaisVenderam = {
-            labels: dados.vendedoresQueMaisVenderam.labels,
+            labels: labelsOriginais,
             datasets: [{
                 label: 'Vendedores que mais venderam na semana',
                 data: dados.vendedoresQueMaisVenderam.valores,
@@ -286,8 +298,12 @@ function atualizarGraficos(dados) {
     }
 
     if (dados.vendedoresQueMaisVenderamMensal.labels.length > 0) {
+        const labelsOriginais = dados.vendedoresQueMaisVenderamMensal.labels;
+        const labelsReduzidos = labelsOriginais.map(label =>
+            label.split(' ').slice(0, 3).join(' ')
+        );
         barDataVendedoresQueMaisVenderamMensal = {
-            labels: dados.vendedoresQueMaisVenderamMensal.labels,
+            labels: labelsOriginais,
             datasets: [{
                 label: 'Vendedores que mais venderam no mês',
                 data: dados.vendedoresQueMaisVenderamMensal.valores,
@@ -299,8 +315,12 @@ function atualizarGraficos(dados) {
     }
 
     if (dados.vendedoresQueMaisVenderamAnual.labels.length > 0) {
+        const labelsOriginais = dados.vendedoresQueMaisVenderamAnual.labels;
+        const labelsReduzidos = labelsOriginais.map(label =>
+            label.split(' ').slice(0, 3).join(' ')
+        );
         barDataVendedoresQueMaisVenderamAnual = {
-            labels: dados.vendedoresQueMaisVenderamAnual.labels,
+            labels: labelsOriginais,
             datasets: [{
                 label: 'Vendedores que mais venderam no ano',
                 data: dados.vendedoresQueMaisVenderamAnual.valores,
@@ -312,8 +332,12 @@ function atualizarGraficos(dados) {
     }
 
     if (dados.vendedoresQueMenosVenderam.labels.length > 0) {
+        const labelsOriginais = dados.vendedoresQueMenosVenderam.labels;
+        const labelsReduzidos = labelsOriginais.map(label =>
+            label.split(' ').slice(0, 3).join(' ')
+        );
         barDataVendedoresQueMenosVenderam = {
-            labels: dados.vendedoresQueMenosVenderam.labels,
+            labels: labelsOriginais,
             datasets: [{
                 label: 'Vendedores que menos venderam na semana',
                 data: dados.vendedoresQueMenosVenderam.valores,
@@ -324,8 +348,12 @@ function atualizarGraficos(dados) {
         };
     }
     if (dados.vendedoresQueMenosVenderamMensal.labels.length > 0) {
+        const labelsOriginais = dados.vendedoresQueMenosVenderamMensal.labels;
+        const labelsReduzidos = labelsOriginais.map(label =>
+            label.split(' ').slice(0, 3).join(' ')
+        );
         barDataVendedoresQueMenosVenderamMensal = {
-            labels: dados.vendedoresQueMenosVenderamMensal.labels,
+            labels: labelsOriginais,
             datasets: [{
                 label: 'Vendedores que menos venderam no mês',
                 data: dados.vendedoresQueMenosVenderamMensal.valores,
@@ -336,8 +364,12 @@ function atualizarGraficos(dados) {
         };
     }
     if (dados.vendedoresQueMenosVenderamAnual.labels.length > 0) {
+        const labelsOriginais = dados.vendedoresQueMenosVenderamAnual.labels;
+        const labelsReduzidos = labelsOriginais.map(label =>
+            label.split(' ').slice(0, 3).join(' ')
+        );
         barDataVendedoresQueMenosVenderamAnual = {
-            labels: dados.vendedoresQueMenosVenderamAnual.labels,
+            labels: labelsOriginais,
             datasets: [{
                 label: 'Vendedores que menos venderam no ano',
                 data: dados.vendedoresQueMenosVenderamAnual.valores,
@@ -349,8 +381,12 @@ function atualizarGraficos(dados) {
     }
 
     if (dados.produtosMaisVendidos.labels.length > 0) {
+        const labelsOriginais = dados.produtosMaisVendidos.labels;
+        const labelsReduzidos = labelsOriginais.map(label =>
+            label.split(' ').slice(0, 1).join(' ')
+        );
         mixedDataProdutosMaisVendidos = {
-            labels: dados.produtosMaisVendidos.labels,
+            labels: labelsOriginais,
             datasets: [
                 {
                     label: 'Produtos que mais venderam na semana',
@@ -364,25 +400,35 @@ function atualizarGraficos(dados) {
         };
     }
 
-    if (dados.produtosMaisVendidosMensal.labels.length > 0) {
+
+    const labelsOriginais = dados.produtosMaisVendidosMensal.labels;
+    const labelsReduzidos = labelsOriginais.map(label =>
+        label.split(' ').slice(0, 3).join(' ')
+    );
+
+    if (labelsOriginais.length > 0) {
         mixedDataProdutosMaisVendidosMensal = {
-            labels: dados.produtosMaisVendidosMensal.labels,
+            labels: labelsOriginais,
             datasets: [
                 {
-                    label: 'Produtos que mais venderam na mês',
+                    label: 'Produtos que mais venderam no mês',
                     data: dados.produtosMaisVendidosMensal.valores,
                     backgroundColor: 'rgb(0, 71, 103)',
                     borderColor: 'rgb(3, 191, 203)',
                     borderWidth: 1,
-                    type: 'bar' // Tipo de gráfico para este dataset
+                    type: 'bar'
                 },
             ]
         };
     }
 
     if (dados.produtosMaisVendidosAnual.labels.length > 0) {
+        const labelsOriginais = dados.produtosMaisVendidosAnual.labels;
+        const labelsReduzidos = labelsOriginais.map(label =>
+            label.split(' ').slice(0, 3).join(' ')
+        );
         mixedDataProdutosMaisVendidosAnual = {
-            labels: dados.produtosMaisVendidosAnual.labels,
+            labels: labelsOriginais,
             datasets: [
                 {
                     label: 'Produtos que mais venderam na ano',
@@ -397,8 +443,12 @@ function atualizarGraficos(dados) {
     }
 
     if (dados.produtosMenosVendidos.labels.length > 0) {
+        const labelsOriginais = dados.produtosMenosVendidos.labels;
+        const labelsReduzidos = labelsOriginais.map(label =>
+            label.split(' ').slice(0, 3).join(' ')
+        );
         mixedDataProdutosMenosVendidos = {
-            labels: dados.produtosMenosVendidos.labels,
+            labels: labelsOriginais,
             datasets: [
                 {
                     label: 'Produtos que menos venderam na semana',
@@ -412,8 +462,12 @@ function atualizarGraficos(dados) {
         };
     }
     if (dados.produtosMenosVendidosMensal.labels.length > 0) {
+        const labelsOriginais = dados.produtosMaisVendidosMensal.labels;
+        const labelsReduzidos = labelsOriginais.map(label =>
+            label.split(' ').slice(0, 3).join(' ')
+        );
         mixedDataProdutosMenosVendidosMensal = {
-            labels: dados.produtosMenosVendidosMensal.labels,
+            labels: labelsOriginais,
             datasets: [
                 {
                     label: 'Produtos que menos venderam no mês',
@@ -427,8 +481,12 @@ function atualizarGraficos(dados) {
         };
     }
     if (dados.produtosMenosVendidosAnual.labels.length > 0) {
+        const labelsOriginais = dados.produtosMaisVendidosAnual.labels;
+        const labelsReduzidos = labelsOriginais.map(label =>
+            label.split(' ').slice(0, 3).join(' ')
+        );
         mixedDataProdutosMenosVendidosAnual = {
-            labels: dados.produtosMenosVendidosAnual.labels,
+            labels: labelsOriginais,
             datasets: [
                 {
                     label: 'Produtos que menos venderam no ano',
@@ -443,8 +501,12 @@ function atualizarGraficos(dados) {
     }
 
     if (dados.clientesQueMaisCompraram.labels.length > 0) {
+        const labelsOriginais = dados.clientesQueMaisCompraram.labels;
+        const labelsReduzidos = labelsOriginais.map(label =>
+            label.split(' ').slice(0, 3).join(' ')
+        );
         barDataClientesQueMaisCompraram = {
-            labels: dados.clientesQueMaisCompraram.labels,
+            labels: labelsOriginais,
             datasets: [{
                 label: 'Clientes que mais compraram na semana',
                 data: dados.clientesQueMaisCompraram.valores,
@@ -456,8 +518,12 @@ function atualizarGraficos(dados) {
     }
 
     if (dados.clientesQueMaisCompraramMensal.labels.length > 0) {
+        const labelsOriginais = dados.clientesQueMaisCompraramMensal.labels;
+        const labelsReduzidos = labelsOriginais.map(label =>
+            label.split(' ').slice(0, 3).join(' ')
+        );
         barDataClientesQueMaisCompraramMensal = {
-            labels: dados.clientesQueMaisCompraramMensal.labels,
+            labels: labelsOriginais,
             datasets: [{
                 label: 'Clientes que mais compraram no mês',
                 data: dados.clientesQueMaisCompraramMensal.valores,
@@ -469,8 +535,12 @@ function atualizarGraficos(dados) {
     }
 
     if (dados.clientesQueMaisCompraramAnual.labels.length > 0) {
+        const labelsOriginais = dados.clientesQueMaisCompraramAnual.labels;
+        const labelsReduzidos = labelsOriginais.map(label =>
+            label.split(' ').slice(0, 3).join(' ')
+        );
         barDataClientesQueMaisCompraramAnual = {
-            labels: dados.clientesQueMaisCompraramAnual.labels,
+            labels: labelsOriginais,
             datasets: [{
                 label: 'Clientes que mais compraram no ano',
                 data: dados.clientesQueMaisCompraramAnual.valores,
@@ -633,23 +703,48 @@ const barConfig = {
                         }).format(value);
                     }
                 }
+            },
+            x: {
+                ticks: {
+                    autoSkip: false, 
+                    minRotation: 0, 
+                    maxRotation: 0,
+                    callback: function(value, index, values) {
+                        const label = this.getLabelForValue(value);
+                        return label.length > 10 ? label.substring(0, 10) + "..." : label;
+                    },
+                    font: function(context) {
+                        let size = Math.max(8, 14 - context.tick.label.length / 2);
+                        return { size: size };
+                    }
+                }
             }
         },
         plugins: {
             tooltip: {
+                backgroundColor: 'rgba(0, 0, 0, 0.8)',
+                titleColor: '#fff',
+                bodyColor: '#fff',
+                borderColor: '#fff',
+                borderWidth: 1,
+                displayColors: false,
                 callbacks: {
-                    label: function (tooltipItem) {
+                    title: function(tooltipItem) {
+                        return 'Nome: ' + tooltipItem.map(item => item.label).join(', ');
+                    },
+                    label: function(tooltipItem) {
                         let value = tooltipItem.raw;
-                        return new Intl.NumberFormat('pt-BR', {
-                            minimumFractionDigits: 2,
-                            maximumFractionDigits: 2
-                        }).format(value);
+                        return `R$ ${new Intl.NumberFormat('pt-BR', { 
+                            minimumFractionDigits: 2, 
+                            maximumFractionDigits: 2 
+                        }).format(value)}`;
                     }
                 }
             }
         }
     }
 };
+
 
 const pieConfig = {
     type: 'pie',
@@ -659,7 +754,6 @@ const pieConfig = {
 };
 
 const mixedConfig = {
-    type: 'mixed', // Tipo misto
     options: {
         responsive: true,
         scales: {
@@ -673,23 +767,49 @@ const mixedConfig = {
                         }).format(value);
                     }
                 }
+            },
+            x: {
+                ticks: {
+                    autoSkip: false, // Garante que os labels não sejam omitidos automaticamente
+                    minRotation: 0, 
+                    maxRotation: 0,
+                    callback: function(value, index, values) {
+                        const label = this.getLabelForValue(value);
+                        return label.length > 10 ? label.substring(0, 10) + "..." : label;
+                    },
+                    font: function(context) {
+                        let size = Math.max(8, 14 - context.tick.label.length / 2);
+                        return { size: size };
+                    }
+                }
             }
         },
         plugins: {
             tooltip: {
+                backgroundColor: 'rgba(0, 0, 0, 0.8)',
+                titleColor: '#fff',
+                bodyColor: '#fff',
+                borderColor: '#fff',
+                borderWidth: 1,
+                displayColors: false,
                 callbacks: {
-                    label: function (tooltipItem) {
+                    title: function(tooltipItem) {
+                        return 'Nome: ' + tooltipItem.map(item => item.label).join(', ');
+                    },
+                    label: function(tooltipItem) {
                         let value = tooltipItem.raw;
-                        return new Intl.NumberFormat('pt-BR', {
-                            minimumFractionDigits: 2,
-                            maximumFractionDigits: 2
-                        }).format(value);
+                        return `R$ ${new Intl.NumberFormat('pt-BR', { 
+                            minimumFractionDigits: 2, 
+                            maximumFractionDigits: 2 
+                        }).format(value)}`;
                     }
                 }
             }
         }
     }
 };
+
+
 
 
 
