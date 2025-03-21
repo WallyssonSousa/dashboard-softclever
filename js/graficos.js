@@ -246,7 +246,7 @@ function atualizarGraficos(dados) {
     }
 
     if (dados.financeiro.labels.length > 0) {
-        const coresOriginais = ['#004767', '#03bfcb', '#2c3e50'];
+        const coresOriginais = ['#FFB84D', '#2ECC71', '#5ac8fa'];
         financeiro = {
             labels: dados.financeiro.labels,
             datasets: [{
@@ -257,7 +257,7 @@ function atualizarGraficos(dados) {
     }
 
     if (dados.financeiroMensal.labels.length > 0) {
-        const coresOriginais = ['#004767', '#03bfcb', '#2c3e50'];
+        const coresOriginais = ['#FFB84D', '#2ECC71', '#5ac8fa'];
         financeiroMensal = {
             labels: dados.financeiroMensal.labels,
             datasets: [{
@@ -270,12 +270,12 @@ function atualizarGraficos(dados) {
     }
 
     if (dados.financeiroAnual.labels.length > 0) {
-        const coresOriginais = ['#004767', '#03bfcb', '#2c3e50'];
+        const coresOriginais = ['#FFB84D', '#2ECC71', '#5ac8fa'];
         financeiroAnual = {
             labels: dados.financeiroAnual.labels,
             datasets: [{
                 data: dados.financeiroAnual.valores,
-                backgroundColor: dados.financeiroAnual.valores.map((valor, index) => valor < 0 ? '#FF0000' : coresOriginais[index % coresOriginais.length])
+                backgroundColor: dados.financeiroAnual.valores.map((valor, index) => valor < 0 ? '#DC3545' : coresOriginais[index % coresOriginais.length])
             }]
         };
     }
@@ -552,7 +552,7 @@ function atualizarGraficos(dados) {
     }
 
     updateGraphData(vendas, barConfig, 'vendas', 'bar');
-    updateGraphData(vendasMensais, barConfig, 'vendasMensais', 'bar');
+    updateGraphData(vendasMensais, barConfig2, 'vendasMensais', 'bar');
     updateGraphData(financeiro, pieConfig, 'financeiro', 'pie');
     updateGraphData(financeiroMensal, pieConfig, 'financeiroMensal', 'pie');
     updateGraphData(financeiroAnual, pieConfig, 'financeiroAnual', 'pie');
@@ -722,7 +722,7 @@ const barConfig = {
         },
         plugins: {
             tooltip: {
-                backgroundColor: 'rgba(0, 0, 0, 0.8)',
+                backgroundColor: 'rgb(0, 71, 103)',
                 titleColor: '#fff',
                 bodyColor: '#fff',
                 borderColor: '#fff',
@@ -770,7 +770,7 @@ const mixedConfig = {
             },
             x: {
                 ticks: {
-                    autoSkip: false, // Garante que os labels não sejam omitidos automaticamente
+                    autoSkip: false, 
                     minRotation: 0, 
                     maxRotation: 0,
                     callback: function(value, index, values) {
@@ -786,7 +786,7 @@ const mixedConfig = {
         },
         plugins: {
             tooltip: {
-                backgroundColor: 'rgba(0, 0, 0, 0.8)',
+                backgroundColor: 'rgb(0, 71, 103)',
                 titleColor: '#fff',
                 bodyColor: '#fff',
                 borderColor: '#fff',
@@ -808,6 +808,64 @@ const mixedConfig = {
         }
     }
 };
+
+const barConfig2 = {
+    options: {
+        responsive: true,
+        scales: {
+            y: {
+                beginAtZero: true,
+                ticks: {
+                    callback: function (value) {
+                        return new Intl.NumberFormat('pt-BR', {
+                            minimumFractionDigits: 2,
+                            maximumFractionDigits: 2
+                        }).format(value);
+                    }
+                }
+            },
+            x: {
+                ticks: {
+                    autoSkip: true, 
+                    maxTicksLimit: 10, 
+                    minRotation: 45, 
+                    maxRotation: 45, 
+                    callback: function(value, index, values) {
+                        const label = this.getLabelForValue(value);
+                        return label; 
+                    },
+                    font: function(context) {
+                        let size = Math.max(8, 14 - context.tick.label.length / 2);
+                        return { size: size };
+                    }
+                }
+            }
+        },
+        plugins: {
+            tooltip: {
+                backgroundColor: 'rgb(0, 71, 103)',
+                titleColor: '#fff',
+                bodyColor: '#fff',
+                borderColor: '#fff',
+                borderWidth: 1,
+                displayColors: false,
+                callbacks: {
+                    title: function(tooltipItem) {
+                        return 'Nome: ' + tooltipItem.map(item => item.label).join(', ');
+                    },
+                    label: function(tooltipItem) {
+                        let value = tooltipItem.raw;
+                        return `R$ ${new Intl.NumberFormat('pt-BR', { 
+                            minimumFractionDigits: 2, 
+                            maximumFractionDigits: 2 
+                        }).format(value)}`;
+                    }
+                }
+            }
+        }
+    }
+};
+
 
 
 
