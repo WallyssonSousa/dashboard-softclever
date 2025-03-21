@@ -213,34 +213,48 @@ let financeiroAnual = [];
 function atualizarGraficos(dados) {
     if (dados.vendas.labels.length > 0) {
         const labelsOriginais = dados.vendas.labels;
-        const labelsReduzidos = labelsOriginais.map(label =>
-            label.split(' ').slice(0, 3).join(' ')
-        );
+
+        const cores = chroma.scale(['#004767', '#007aff'])
+            .mode('lab')
+            .colors(labelsOriginais.length);
+
         vendas = {
             labels: labelsOriginais,
             datasets: [{
                 label: 'Vendas da semana',
                 data: dados.vendas.valores,
-                backgroundColor: '#004767',
-                borderColor: '#03bfcb',
-                borderWidth: 1
+                backgroundColor: cores,
+                borderWidth: 0,
+                hoverBorderColor: '#03bfcb',
+                borderRadius: 2,
+                shadowOffsetX: 4,
+                shadowOffsetY: 4,
+                shadowBlur: 10,
+                shadowColor: 'rgba(0, 0, 0, 0.25)'
             }]
         };
     }
 
     if (dados.vendasMensais.labels.length > 0) {
         const labelsOriginais = dados.vendasMensais.labels;
-        const labelsReduzidos = labelsOriginais.map(label =>
-            label.split(' ').slice(0, 3).join(' ')
-        );
+
+        const cores = chroma.scale(['#007aff', '#004767'])
+            .mode('lab')
+            .colors(labelsOriginais.length);
+
         vendasMensais = {
             labels: labelsOriginais,
             datasets: [{
                 label: 'Vendas do mês',
                 data: dados.vendasMensais.valores,
-                backgroundColor: '#004767',
-                borderColor: '#03bfcb',
-                borderWidth: 1
+                backgroundColor: cores,
+                borderWidth: 0,
+                hoverBorderColor: '#03bfcb',
+                borderRadius: 2,
+                shadowOffsetX: 4,
+                shadowOffsetY: 4,
+                shadowBlur: 10,
+                shadowColor: 'rgba(0, 0, 0, 0.25)'
             }]
         };
     }
@@ -282,118 +296,164 @@ function atualizarGraficos(dados) {
 
     if (dados.vendedoresQueMaisVenderam.labels.length > 0) {
         const labelsOriginais = dados.vendedoresQueMaisVenderam.labels;
-        const labelsReduzidos = labelsOriginais.map(label =>
-            label.split(' ').slice(0, 3).join(' ')
-        );
+
+        const cores = chroma.scale(['#007aff', '#004767'])
+            .mode('lab')
+            .colors(labelsOriginais.length);
+
         barDataVendedoresQueMaisVenderam = {
             labels: labelsOriginais,
             datasets: [{
                 label: 'Vendedores que mais venderam na semana',
                 data: dados.vendedoresQueMaisVenderam.valores,
-                backgroundColor: 'rgb(0, 71, 103)',
-                borderColor: 'rgb(3, 191, 203)',
-                borderWidth: 1
+                backgroundColor: cores,
+                borderWidth: 0,
+                hoverBorderColor: '#004767',
+                borderRadius: 2,
+                shadowOffsetX: 4,
+                shadowOffsetY: 4,
+                shadowBlur: 10,
+                shadowColor: 'rgba(0, 0, 0, 0.25)'
             }]
         };
     }
 
     if (dados.vendedoresQueMaisVenderamMensal.labels.length > 0) {
         const labelsOriginais = dados.vendedoresQueMaisVenderamMensal.labels;
-        const labelsReduzidos = labelsOriginais.map(label =>
-            label.split(' ').slice(0, 3).join(' ')
-        );
+        const cores = chroma.scale(['#007aff', '#004767'])
+            .mode('lab')
+            .colors(labelsOriginais.length);
+
+
         barDataVendedoresQueMaisVenderamMensal = {
             labels: labelsOriginais,
             datasets: [{
                 label: 'Vendedores que mais venderam no mês',
                 data: dados.vendedoresQueMaisVenderamMensal.valores,
-                backgroundColor: 'rgb(0, 71, 103)',
-                borderColor: 'rgb(3, 191, 203)',
-                borderWidth: 1
+                backgroundColor: cores,
+                borderWidth: 0,
+                hoverBorderColor: '#03bfcb',
+                borderRadius: 2,
+                shadowOffsetX: 4,
+                shadowOffsetY: 4,
+                shadowBlur: 10,
+                shadowColor: 'rgba(0, 0, 0, 0.25)'
             }]
         };
     }
 
     if (dados.vendedoresQueMaisVenderamAnual.labels.length > 0) {
         const labelsOriginais = dados.vendedoresQueMaisVenderamAnual.labels;
-        const labelsReduzidos = labelsOriginais.map(label =>
-            label.split(' ').slice(0, 3).join(' ')
-        );
+        const cores = chroma.scale(['#004767', '#007aff'])
+            .mode('lab')
+            .colors(labelsOriginais.length);
+
         barDataVendedoresQueMaisVenderamAnual = {
             labels: labelsOriginais,
             datasets: [{
                 label: 'Vendedores que mais venderam no ano',
                 data: dados.vendedoresQueMaisVenderamAnual.valores,
-                backgroundColor: 'rgb(0, 71, 103)',
-                borderColor: 'rgb(3, 191, 203)',
-                borderWidth: 1
+                backgroundColor: cores,
+                borderWidth: 0,
+                // Configurações de sombra
+                hoverBorderColor: '#03bfcb',
+                borderRadius: 2, // Bordas arredondadas para as barras
+                // Sombra do elemento
+                shadowOffsetX: 4,
+                shadowOffsetY: 4,
+                shadowBlur: 10,
+                shadowColor: 'rgba(0, 0, 0, 0.25)' // Cor da sombra
             }]
         };
     }
 
     if (dados.vendedoresQueMenosVenderam.labels.length > 0) {
         const labelsOriginais = dados.vendedoresQueMenosVenderam.labels;
-        const labelsReduzidos = labelsOriginais.map(label =>
-            label.split(' ').slice(0, 3).join(' ')
-        );
+        const cores = chroma.scale(['#007aff', '#004767'])
+            .mode('lab')
+            .colors(labelsOriginais.length);
         barDataVendedoresQueMenosVenderam = {
             labels: labelsOriginais,
             datasets: [{
                 label: 'Vendedores que menos venderam na semana',
                 data: dados.vendedoresQueMenosVenderam.valores,
-                backgroundColor: 'rgb(0, 71, 103)',
-                borderColor: 'rgb(3, 191, 203)',
-                borderWidth: 1
+                backgroundColor: cores,
+                borderWidth: 0,
+
+                hoverBorderColor: '#03bfcb',
+                borderRadius: 2,
+                shadowOffsetX: 4,
+                shadowOffsetY: 4,
+                shadowBlur: 10,
+                shadowColor: 'rgba(0, 0, 0, 0.25)'
             }]
         };
     }
     if (dados.vendedoresQueMenosVenderamMensal.labels.length > 0) {
         const labelsOriginais = dados.vendedoresQueMenosVenderamMensal.labels;
-        const labelsReduzidos = labelsOriginais.map(label =>
-            label.split(' ').slice(0, 3).join(' ')
-        );
+        const cores = chroma.scale(['#007aff', '#004767'])
+            .mode('lab')
+            .colors(labelsOriginais.length);
         barDataVendedoresQueMenosVenderamMensal = {
             labels: labelsOriginais,
             datasets: [{
                 label: 'Vendedores que menos venderam no mês',
                 data: dados.vendedoresQueMenosVenderamMensal.valores,
-                backgroundColor: 'rgb(0, 71, 103)',
-                borderColor: 'rgb(3, 191, 203)',
-                borderWidth: 1
+                backgroundColor: cores,
+                borderWidth: 0,
+
+                hoverBorderColor: '#03bfcb',
+                borderRadius: 2,
+                shadowOffsetX: 4,
+                shadowOffsetY: 4,
+                shadowBlur: 10,
+                shadowColor: 'rgba(0, 0, 0, 0.25)'
             }]
         };
     }
     if (dados.vendedoresQueMenosVenderamAnual.labels.length > 0) {
         const labelsOriginais = dados.vendedoresQueMenosVenderamAnual.labels;
-        const labelsReduzidos = labelsOriginais.map(label =>
-            label.split(' ').slice(0, 3).join(' ')
-        );
+        const cores = chroma.scale(['#004767', '#007aff'])
+            .mode('lab')
+            .colors(labelsOriginais.length);
         barDataVendedoresQueMenosVenderamAnual = {
             labels: labelsOriginais,
             datasets: [{
                 label: 'Vendedores que menos venderam no ano',
                 data: dados.vendedoresQueMenosVenderamAnual.valores,
-                backgroundColor: 'rgb(0, 71, 103)',
-                borderColor: 'rgb(3, 191, 203)',
-                borderWidth: 1
+                backgroundColor: cores,
+                borderWidth: 0,
+
+                hoverBorderColor: '#03bfcb',
+                borderRadius: 2,
+                shadowOffsetX: 4,
+                shadowOffsetY: 4,
+                shadowBlur: 10,
+                shadowColor: 'rgba(0, 0, 0, 0.25)'
             }]
         };
     }
 
     if (dados.produtosMaisVendidos.labels.length > 0) {
         const labelsOriginais = dados.produtosMaisVendidos.labels;
-        const labelsReduzidos = labelsOriginais.map(label =>
-            label.split(' ').slice(0, 1).join(' ')
-        );
+        const cores = chroma.scale(['#004767', '#007aff'])
+            .mode('lab')
+            .colors(labelsOriginais.length);
         mixedDataProdutosMaisVendidos = {
             labels: labelsOriginais,
             datasets: [
                 {
                     label: 'Produtos que mais venderam na semana',
                     data: dados.produtosMaisVendidos.valores,
-                    backgroundColor: 'rgb(0, 71, 103)',
-                    borderColor: 'rgb(3, 191, 203)',
-                    borderWidth: 1,
+                    backgroundColor: cores,
+                    borderWidth: 0,
+
+                    hoverBorderColor: '#03bfcb',
+                    borderRadius: 2,
+                    shadowOffsetX: 2,
+                    shadowOffsetY: 2,
+                    shadowBlur: 4,
+                    shadowColor: 'rgba(0, 0, 0, 0.3)',
                     type: 'bar' // Tipo de gráfico para este dataset
                 },
             ]
@@ -402,9 +462,9 @@ function atualizarGraficos(dados) {
 
 
     const labelsOriginais = dados.produtosMaisVendidosMensal.labels;
-    const labelsReduzidos = labelsOriginais.map(label =>
-        label.split(' ').slice(0, 3).join(' ')
-    );
+    const cores = chroma.scale(['#004767', '#007aff'])
+        .mode('lab')
+        .colors(labelsOriginais.length);
 
     if (labelsOriginais.length > 0) {
         mixedDataProdutosMaisVendidosMensal = {
@@ -413,9 +473,15 @@ function atualizarGraficos(dados) {
                 {
                     label: 'Produtos que mais venderam no mês',
                     data: dados.produtosMaisVendidosMensal.valores,
-                    backgroundColor: 'rgb(0, 71, 103)',
-                    borderColor: 'rgb(3, 191, 203)',
-                    borderWidth: 1,
+                    backgroundColor: cores,
+                    borderWidth: 0,
+
+                    hoverBorderColor: '#03bfcb',
+                    borderRadius: 2,
+                    shadowOffsetX: 2,
+                    shadowOffsetY: 2,
+                    shadowBlur: 4,
+                    shadowColor: 'rgba(0, 0, 0, 0.3)',
                     type: 'bar'
                 },
             ]
@@ -424,18 +490,24 @@ function atualizarGraficos(dados) {
 
     if (dados.produtosMaisVendidosAnual.labels.length > 0) {
         const labelsOriginais = dados.produtosMaisVendidosAnual.labels;
-        const labelsReduzidos = labelsOriginais.map(label =>
-            label.split(' ').slice(0, 3).join(' ')
-        );
+        const cores = chroma.scale(['#004767', '#007aff'])
+            .mode('lab')
+            .colors(labelsOriginais.length);
         mixedDataProdutosMaisVendidosAnual = {
             labels: labelsOriginais,
             datasets: [
                 {
                     label: 'Produtos que mais venderam na ano',
                     data: dados.produtosMaisVendidosAnual.valores,
-                    backgroundColor: 'rgb(0, 71, 103)',
-                    borderColor: 'rgb(3, 191, 203)',
-                    borderWidth: 1,
+                    backgroundColor: cores,
+                    borderWidth: 0,
+
+                    hoverBorderColor: '#03bfcb',
+                    borderRadius: 2,
+                    shadowOffsetX: 2,
+                    shadowOffsetY: 2,
+                    shadowBlur: 4,
+                    shadowColor: 'rgba(0, 0, 0, 0.3)',
                     type: 'bar' // Tipo de gráfico para este dataset
                 },
             ]
@@ -444,18 +516,24 @@ function atualizarGraficos(dados) {
 
     if (dados.produtosMenosVendidos.labels.length > 0) {
         const labelsOriginais = dados.produtosMenosVendidos.labels;
-        const labelsReduzidos = labelsOriginais.map(label =>
-            label.split(' ').slice(0, 3).join(' ')
-        );
+        const cores = chroma.scale(['#004767', '#007aff'])
+            .mode('lab')
+            .colors(labelsOriginais.length);
         mixedDataProdutosMenosVendidos = {
             labels: labelsOriginais,
             datasets: [
                 {
                     label: 'Produtos que menos venderam na semana',
                     data: dados.produtosMenosVendidos.valores,
-                    backgroundColor: 'rgb(0, 71, 103)',
-                    borderColor: 'rgb(3, 191, 203)',
-                    borderWidth: 1,
+                    backgroundColor: cores,
+                    borderWidth: 0,
+
+                    hoverBorderColor: '#03bfcb',
+                    borderRadius: 2,
+                    shadowOffsetX: 2,
+                    shadowOffsetY: 2,
+                    shadowBlur: 4,
+                    shadowColor: 'rgba(0, 0, 0, 0.3)',
                     type: 'bar' // Tipo de gráfico para este dataset
                 },
             ]
@@ -463,18 +541,24 @@ function atualizarGraficos(dados) {
     }
     if (dados.produtosMenosVendidosMensal.labels.length > 0) {
         const labelsOriginais = dados.produtosMaisVendidosMensal.labels;
-        const labelsReduzidos = labelsOriginais.map(label =>
-            label.split(' ').slice(0, 3).join(' ')
-        );
+        const cores = chroma.scale(['#004767', '#007aff'])
+            .mode('lab')
+            .colors(labelsOriginais.length);
         mixedDataProdutosMenosVendidosMensal = {
             labels: labelsOriginais,
             datasets: [
                 {
                     label: 'Produtos que menos venderam no mês',
                     data: dados.produtosMenosVendidosMensal.valores,
-                    backgroundColor: 'rgb(0, 71, 103)',
-                    borderColor: 'rgb(3, 191, 203)',
-                    borderWidth: 1,
+                    backgroundColor: cores,
+                    borderWidth: 0,
+
+                    hoverBorderColor: '#03bfcb',
+                    borderRadius: 2,
+                    shadowOffsetX: 2,
+                    shadowOffsetY: 2,
+                    shadowBlur: 4,
+                    shadowColor: 'rgba(0, 0, 0, 0.3)',
                     type: 'bar' // Tipo de gráfico para este dataset
                 },
             ]
@@ -482,18 +566,24 @@ function atualizarGraficos(dados) {
     }
     if (dados.produtosMenosVendidosAnual.labels.length > 0) {
         const labelsOriginais = dados.produtosMaisVendidosAnual.labels;
-        const labelsReduzidos = labelsOriginais.map(label =>
-            label.split(' ').slice(0, 3).join(' ')
-        );
+        const cores = chroma.scale(['#004767', '#007aff'])
+            .mode('lab')
+            .colors(labelsOriginais.length);
         mixedDataProdutosMenosVendidosAnual = {
             labels: labelsOriginais,
             datasets: [
                 {
                     label: 'Produtos que menos venderam no ano',
                     data: dados.produtosMenosVendidosAnual.valores,
-                    backgroundColor: 'rgb(0, 71, 103)',
-                    borderColor: 'rgb(3, 191, 203)',
-                    borderWidth: 1,
+                    backgroundColor: cores,
+                    borderWidth: 0,
+
+                    hoverBorderColor: '#03bfcb',
+                    borderRadius: 2,
+                    shadowOffsetX: 2,
+                    shadowOffsetY: 2,
+                    shadowBlur: 4,
+                    shadowColor: 'rgba(0, 0, 0, 0.3)',
                     type: 'bar' // Tipo de gráfico para este dataset
                 },
             ]
@@ -502,51 +592,69 @@ function atualizarGraficos(dados) {
 
     if (dados.clientesQueMaisCompraram.labels.length > 0) {
         const labelsOriginais = dados.clientesQueMaisCompraram.labels;
-        const labelsReduzidos = labelsOriginais.map(label =>
-            label.split(' ').slice(0, 3).join(' ')
-        );
+        const cores = chroma.scale(['#004767', '#007aff'])
+            .mode('lab')
+            .colors(labelsOriginais.length);
         barDataClientesQueMaisCompraram = {
             labels: labelsOriginais,
             datasets: [{
                 label: 'Clientes que mais compraram na semana',
                 data: dados.clientesQueMaisCompraram.valores,
-                backgroundColor: 'rgb(0, 71, 103)',
-                borderColor: 'rgb(3, 191, 203)',
-                borderWidth: 1
+                backgroundColor: cores,
+                borderWidth: 0,
+
+                hoverBorderColor: '#03bfcb',
+                borderRadius: 2,
+                shadowOffsetX: 4,
+                shadowOffsetY: 4,
+                shadowBlur: 10,
+                shadowColor: 'rgba(0, 0, 0, 0.25)'
             }]
         };
     }
 
     if (dados.clientesQueMaisCompraramMensal.labels.length > 0) {
         const labelsOriginais = dados.clientesQueMaisCompraramMensal.labels;
-        const labelsReduzidos = labelsOriginais.map(label =>
-            label.split(' ').slice(0, 3).join(' ')
-        );
+        const cores = chroma.scale(['#004767', '#007aff'])
+            .mode('lab')
+            .colors(labelsOriginais.length);
         barDataClientesQueMaisCompraramMensal = {
             labels: labelsOriginais,
             datasets: [{
                 label: 'Clientes que mais compraram no mês',
                 data: dados.clientesQueMaisCompraramMensal.valores,
-                backgroundColor: 'rgb(0, 71, 103)',
-                borderColor: 'rgb(3, 191, 203)',
-                borderWidth: 1
+                backgroundColor: cores,
+                borderWidth: 0,
+
+                hoverBorderColor: '#03bfcb',
+                borderRadius: 2,
+                shadowOffsetX: 4,
+                shadowOffsetY: 4,
+                shadowBlur: 10,
+                shadowColor: 'rgba(0, 0, 0, 0.25)'
             }]
         };
     }
 
     if (dados.clientesQueMaisCompraramAnual.labels.length > 0) {
         const labelsOriginais = dados.clientesQueMaisCompraramAnual.labels;
-        const labelsReduzidos = labelsOriginais.map(label =>
-            label.split(' ').slice(0, 3).join(' ')
-        );
+        const cores = chroma.scale(['#004767', '#007aff'])
+            .mode('lab')
+            .colors(labelsOriginais.length);
         barDataClientesQueMaisCompraramAnual = {
             labels: labelsOriginais,
             datasets: [{
                 label: 'Clientes que mais compraram no ano',
                 data: dados.clientesQueMaisCompraramAnual.valores,
-                backgroundColor: 'rgb(0, 71, 103)',
-                borderColor: 'rgb(3, 191, 203)',
-                borderWidth: 1
+                backgroundColor: cores,
+                borderWidth: 0,
+
+                hoverBorderColor: '#03bfcb',
+                borderRadius: 2,
+                shadowOffsetX: 4,
+                shadowOffsetY: 4,
+                shadowBlur: 10,
+                shadowColor: 'rgba(0, 0, 0, 0.25)'
             }]
         };
     }
@@ -706,14 +814,14 @@ const barConfig = {
             },
             x: {
                 ticks: {
-                    autoSkip: false, 
-                    minRotation: 0, 
+                    autoSkip: false,
+                    minRotation: 0,
                     maxRotation: 0,
-                    callback: function(value, index, values) {
+                    callback: function (value, index, values) {
                         const label = this.getLabelForValue(value);
                         return label.length > 10 ? label.substring(0, 10) + "..." : label;
                     },
-                    font: function(context) {
+                    font: function (context) {
                         let size = Math.max(8, 14 - context.tick.label.length / 2);
                         return { size: size };
                     }
@@ -722,21 +830,21 @@ const barConfig = {
         },
         plugins: {
             tooltip: {
-                backgroundColor: 'rgb(0, 71, 103)',
+                backgroundColor: 'rgb(90, 200, 250)',
                 titleColor: '#fff',
                 bodyColor: '#fff',
                 borderColor: '#fff',
                 borderWidth: 1,
                 displayColors: false,
                 callbacks: {
-                    title: function(tooltipItem) {
+                    title: function (tooltipItem) {
                         return 'Nome: ' + tooltipItem.map(item => item.label).join(', ');
                     },
-                    label: function(tooltipItem) {
+                    label: function (tooltipItem) {
                         let value = tooltipItem.raw;
-                        return `R$ ${new Intl.NumberFormat('pt-BR', { 
-                            minimumFractionDigits: 2, 
-                            maximumFractionDigits: 2 
+                        return `R$ ${new Intl.NumberFormat('pt-BR', {
+                            minimumFractionDigits: 2,
+                            maximumFractionDigits: 2
                         }).format(value)}`;
                     }
                 }
@@ -770,14 +878,14 @@ const mixedConfig = {
             },
             x: {
                 ticks: {
-                    autoSkip: false, 
-                    minRotation: 0, 
+                    autoSkip: false,
+                    minRotation: 0,
                     maxRotation: 0,
-                    callback: function(value, index, values) {
+                    callback: function (value, index, values) {
                         const label = this.getLabelForValue(value);
                         return label.length > 10 ? label.substring(0, 10) + "..." : label;
                     },
-                    font: function(context) {
+                    font: function (context) {
                         let size = Math.max(8, 14 - context.tick.label.length / 2);
                         return { size: size };
                     }
@@ -786,21 +894,21 @@ const mixedConfig = {
         },
         plugins: {
             tooltip: {
-                backgroundColor: 'rgb(0, 71, 103)',
+                backgroundColor: 'rgb(90, 200, 250)',
                 titleColor: '#fff',
                 bodyColor: '#fff',
                 borderColor: '#fff',
                 borderWidth: 1,
                 displayColors: false,
                 callbacks: {
-                    title: function(tooltipItem) {
+                    title: function (tooltipItem) {
                         return 'Nome: ' + tooltipItem.map(item => item.label).join(', ');
                     },
-                    label: function(tooltipItem) {
+                    label: function (tooltipItem) {
                         let value = tooltipItem.raw;
-                        return `R$ ${new Intl.NumberFormat('pt-BR', { 
-                            minimumFractionDigits: 2, 
-                            maximumFractionDigits: 2 
+                        return `R$ ${new Intl.NumberFormat('pt-BR', {
+                            minimumFractionDigits: 2,
+                            maximumFractionDigits: 2
                         }).format(value)}`;
                     }
                 }
@@ -826,15 +934,15 @@ const barConfig2 = {
             },
             x: {
                 ticks: {
-                    autoSkip: true, 
-                    maxTicksLimit: 10, 
-                    minRotation: 45, 
-                    maxRotation: 45, 
-                    callback: function(value, index, values) {
+                    autoSkip: true,
+                    maxTicksLimit: 10,
+                    minRotation: 45,
+                    maxRotation: 45,
+                    callback: function (value, index, values) {
                         const label = this.getLabelForValue(value);
-                        return label; 
+                        return label;
                     },
-                    font: function(context) {
+                    font: function (context) {
                         let size = Math.max(8, 14 - context.tick.label.length / 2);
                         return { size: size };
                     }
@@ -843,21 +951,21 @@ const barConfig2 = {
         },
         plugins: {
             tooltip: {
-                backgroundColor: 'rgb(0, 71, 103)',
+                backgroundColor: 'rgb(90, 200, 250)',
                 titleColor: '#fff',
                 bodyColor: '#fff',
                 borderColor: '#fff',
                 borderWidth: 1,
                 displayColors: false,
                 callbacks: {
-                    title: function(tooltipItem) {
+                    title: function (tooltipItem) {
                         return 'Nome: ' + tooltipItem.map(item => item.label).join(', ');
                     },
-                    label: function(tooltipItem) {
+                    label: function (tooltipItem) {
                         let value = tooltipItem.raw;
-                        return `R$ ${new Intl.NumberFormat('pt-BR', { 
-                            minimumFractionDigits: 2, 
-                            maximumFractionDigits: 2 
+                        return `R$ ${new Intl.NumberFormat('pt-BR', {
+                            minimumFractionDigits: 2,
+                            maximumFractionDigits: 2
                         }).format(value)}`;
                     }
                 }

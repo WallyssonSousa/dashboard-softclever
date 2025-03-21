@@ -1,7 +1,7 @@
 const btnTopo = document.getElementById("btnTopo");
 
 window.onscroll = function () {
-    if (document.documentElement.scrollTop > 300) {
+    if (document.documentElement.scrollTop > 600) {
         btnTopo.style.display = "block";
     } else {
         btnTopo.style.display = "none";

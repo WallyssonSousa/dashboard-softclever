@@ -3,7 +3,7 @@
     --branco: #fff;
     --cinzaNeve: #f0f0f0;
     --azulPetroleo: #004767;
-    --azulClaroTurquesa: #03bfcb;
+    --azulClaroTurquesa: #03bcc9;
     --corBotaoFecharMenu: #e74c3c;
     --corAzul: #007aff;
     --corAzulTurquesa: #5ac8fa;
@@ -14,7 +14,7 @@
     --cinzaNeveModoNoturno: #1e1e1e;
     --azulPetroleoModoNoturno: #004767;
     /* Azul petróleo mais escuro */
-    --azulClaroTurquesaModoNoturno: #5ac8fa;
+    --azulClaroTurquesaModoNoturno: #59c7fa;
     /* Azul turquesa mais vibrante */
     --corBotaoFecharMenuModoNoturno: #ff6b6b;
     /* Vermelho suave para botão de fechar */
@@ -35,19 +35,19 @@ body {
     position: fixed;
     bottom: 20px;
     right: 20px;
-    display: none;
-    background-color: var(--azulPetroleo);
+    display: block;
+    background-color: var(--corAzul);
     color: white;
     border: none;
     padding: 10px 15px;
     border-radius: 5px;
     cursor: pointer;
     font-size: 16px;
-    transition: opacity 0.3s, transform 0.3s;
+    transition: opacity 0.3s, transform 0.10s;
 }
 
 #btnTopo:hover {
-    background-color: var(--azulClaroTurquesa);
+    background-color: var(--azulPetroleoModoNoturno);
 }
 
 #btnTopo.show {
@@ -88,10 +88,6 @@ body {
 
 .modo-noturno .card h3 {
     color: var(--azulClaroTurquesaModoNoturno);
-}
-
-.modo-noturno #btnTopo{
-    background-color: var(--azulClaroTurquesaModoNoturno);
 }
 
 .modo-noturno #btnTopo:hover{
